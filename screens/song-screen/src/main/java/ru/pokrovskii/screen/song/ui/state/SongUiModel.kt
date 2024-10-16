@@ -1,7 +1,7 @@
 package ru.pokrovskii.screen.song.ui.state
 
 import androidx.compose.runtime.Immutable
-import ru.pokrovskii.model.artist.PrimaryArtist
+import ru.pokrovskii.model.artist.Artist
 
 @Immutable
 data class SongUiModel(
@@ -12,7 +12,7 @@ data class SongUiModel(
     val coverUrl: String?,
     val songTextUrl: String,
     val recordingLocation: String,
-    val producers: List<PrimaryArtist>,
-    val primaryArtists: List<PrimaryArtist>,
-    val featuredArtists: List<PrimaryArtist>,
+    val producers: List<Artist>,
+    val artists: List<Artist>,
+    val featuredArtists: List<Artist>,
 )
