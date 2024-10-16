@@ -35,7 +35,9 @@ android {
 dependencies {
 
     implementation(project(":model"))
+    implementation(project(":screens:favorites-screen"))
     implementation(project(":screens:search-screen"))
+    implementation(project(":screens:song-screen"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

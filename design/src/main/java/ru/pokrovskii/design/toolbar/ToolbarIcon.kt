@@ -1,7 +1,9 @@
 package ru.pokrovskii.design.toolbar
 
+import androidx.compose.runtime.Immutable
 import ru.pokrovskii.design.R
 
+@Immutable
 sealed interface ToolbarIcon {
 
     val iconRes: Int

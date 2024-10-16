@@ -39,6 +39,7 @@ dependencies {
     implementation(project(":navigation"))
     implementation(project(":network"))
     implementation(project(":screens:search-screen"))
+    implementation(project(":screens:song-screen"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.runtime)

@@ -13,6 +13,6 @@ class SearchScreenActionsImpl(
     }
 
     override fun openSongScreen(id: Int) {
-        router.openScreen(Screen.Song)
+        router.openScreen(Screen.Song(id))
     }
 }

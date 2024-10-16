@@ -1,7 +1,9 @@
 package ru.pokrovskii.screen.search.ui.success
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
@@ -31,6 +33,10 @@ internal fun SearchScreenSuccess(
                 model = song,
                 onClick = onTrackClick,
             )
+        }
+
+        item {
+            Spacer(modifier = Modifier.navigationBarsPadding())
         }
     }
 }

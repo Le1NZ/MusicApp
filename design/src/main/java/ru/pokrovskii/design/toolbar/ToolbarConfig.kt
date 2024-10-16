@@ -1,6 +1,9 @@
 package ru.pokrovskii.design.toolbar
 
+import androidx.compose.runtime.Immutable
 
+
+@Immutable
 data class ToolbarConfig(
     val icons: List<ToolbarIcon>,
 ) {

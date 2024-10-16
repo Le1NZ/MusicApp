@@ -2,8 +2,11 @@ package ru.pokrovskii.model.screen
 
 sealed interface Screen {
 
-    data object Artist: Screen
     data object Search : Screen
-    data object Song: Screen
+
+    data class Song(
+        val id: Int,
+    ) : Screen
+
     data object Favorites: Screen
 }
