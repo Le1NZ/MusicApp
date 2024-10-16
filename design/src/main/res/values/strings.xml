@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="music">MUSIC</string>
+    <string name="error">Ошибка :(</string>
+    <string name="update">Обновить</string>
+    <string name="update_content">Обновить</string>
+</resources>
