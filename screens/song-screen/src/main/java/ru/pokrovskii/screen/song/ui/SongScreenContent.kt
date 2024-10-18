@@ -44,6 +44,8 @@ internal fun SongScreenContent(
             )
             is SongScreenState.Success -> SongScreenSuccess(
                 state = state,
+                onLikeClick = presenter::onLikeClick,
+                onToTextButtonClick = presenter::onToTextButtonClick,
             )
         }
     }

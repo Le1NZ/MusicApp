@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hot">Горячее!</string>
+    <string name="primary_artists">Основные артисты</string>
+    <string name="featured_artists">Артисты на фите</string>
+    <string name="producer_artists">Продюсеры</string>
+    <string name="release_data">Дата релиза: %1$s</string>
+    <string name="recording_location">Место записи: %1$s</string>
+    <string name="view_count">Просмотров: %1$s</string>
+    <string name="to_song_text">К тексту песни</string>
+</resources>

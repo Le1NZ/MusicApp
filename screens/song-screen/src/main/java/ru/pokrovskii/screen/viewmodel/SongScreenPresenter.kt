@@ -14,6 +14,8 @@ internal interface SongScreenPresenter {
     fun onFavoritesClick()
     fun onSearchClick()
     fun onRetryClick()
+    fun onLikeClick()
+    fun onToTextButtonClick()
 }
 
 internal class SongScreenPresenterImpl(
@@ -32,6 +34,14 @@ internal class SongScreenPresenterImpl(
     override fun onRetryClick() {
         viewModel.onRetryClick()
     }
+
+    override fun onLikeClick() {
+        // TODO
+    }
+
+    override fun onToTextButtonClick() {
+        // TODO
+    }
 }
 
 internal class SongScreenPresenterPreview : SongScreenPresenter {
@@ -41,4 +51,6 @@ internal class SongScreenPresenterPreview : SongScreenPresenter {
     override fun onFavoritesClick() = Unit
     override fun onSearchClick() = Unit
     override fun onRetryClick() = Unit
+    override fun onLikeClick() = Unit
+    override fun onToTextButtonClick() = Unit
 }
