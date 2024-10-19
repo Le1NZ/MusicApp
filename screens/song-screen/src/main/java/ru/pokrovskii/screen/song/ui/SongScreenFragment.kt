@@ -15,8 +15,8 @@ import ru.pokrovskii.design.theme.AppTheme
 import ru.pokrovskii.design.viewmodel.viewModelFactory
 import ru.pokrovskii.screen.song.api.SongScreenApi
 import ru.pokrovskii.screen.song.api.SongScreenDependencies
-import ru.pokrovskii.screen.viewmodel.SongScreenPresenterImpl
-import ru.pokrovskii.screen.viewmodel.SongScreenViewModel
+import ru.pokrovskii.screen.song.viewmodel.SongScreenPresenterImpl
+import ru.pokrovskii.screen.song.viewmodel.SongScreenViewModel
 
 internal class SongScreenFragment : Fragment() {
 
@@ -24,7 +24,7 @@ internal class SongScreenFragment : Fragment() {
         requireArguments().getParcelable(KET_ARGS)
     )
     private val dependencies: SongScreenDependencies by inject()
-    private val viewModel: SongScreenViewModel by viewModelFactory {
+    private val viewModel by viewModelFactory {
         SongScreenViewModel(
             args = args,
             songScreenCenter = get(),

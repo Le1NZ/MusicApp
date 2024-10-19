@@ -60,13 +60,15 @@ internal fun SearchScreenContent(
             onValueChange = presenter::onQueryChanged,
             placeholder = { Text(text = stringResource(R.string.enter_query)) },
             trailingIcon = {
-                IconButton(
-                    onClick = { presenter.onQueryChanged("") },
-                ) {
-                    Icon(
-                        painter = painterResource(id = drawable.ic_close_24),
-                        contentDescription = null,
-                    )
+                if (query.isNotEmpty()) {
+                    IconButton(
+                        onClick = { presenter.onQueryChanged("") },
+                    ) {
+                        Icon(
+                            painter = painterResource(id = drawable.ic_close_24),
+                            contentDescription = null,
+                        )
+                    }
                 }
             }
         )

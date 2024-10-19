@@ -1,4 +1,4 @@
-package ru.pokrovskii.screen.viewmodel
+package ru.pokrovskii.screen.song.viewmodel
 
 import androidx.compose.runtime.Stable
 import kotlinx.coroutines.flow.MutableStateFlow

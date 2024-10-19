@@ -35,6 +35,10 @@ android {
 
 dependencies {
 
+    implementation(project(":design"))
+    implementation(project(":model"))
+    implementation(project(":database"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
 
@@ -45,4 +49,11 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.androidx.compiler)
     implementation(libs.androidx.runtime)
+
+    // Coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
+    // Di
+    implementation(libs.koin.android)
 }
