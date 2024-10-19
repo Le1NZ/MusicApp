@@ -1,4 +1,4 @@
-package ru.pokrovskii.screen.viewmodel
+package ru.pokrovskii.screen.song.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

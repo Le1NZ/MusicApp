@@ -4,7 +4,7 @@ import ru.pokrovskii.model.screen.Screen
 import ru.pokrovskii.navigation.api.Router
 import ru.pokrovskii.screen.search.api.SearchScreenActions
 
-class SearchScreenActionsImpl(
+internal class SearchScreenActionsImpl(
     private val router: Router,
 ) : SearchScreenActions {
 

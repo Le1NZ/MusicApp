@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.compose.compiler)
 }
 
 android {
-    namespace = "ru.pokrovskii.implementation"
+    namespace = "ru.pokrovskii.database"
     compileSdk = 34
 
     defaultConfig {
@@ -35,15 +34,10 @@ android {
 
 dependencies {
 
-    implementation(project(":model"))
-    implementation(project(":navigation"))
-    implementation(project(":network"))
-    implementation(project(":screens:favorites-screen"))
-    implementation(project(":screens:search-screen"))
-    implementation(project(":screens:song-screen"))
-
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.runtime)
-    // Di
-    implementation(libs.koin.android)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

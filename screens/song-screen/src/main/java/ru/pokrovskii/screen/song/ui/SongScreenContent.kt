@@ -15,8 +15,8 @@ import ru.pokrovskii.design.toolbar.ToolbarConfig
 import ru.pokrovskii.design.toolbar.ToolbarIcon
 import ru.pokrovskii.screen.song.ui.state.SongScreenState
 import ru.pokrovskii.screen.song.ui.success.SongScreenSuccess
-import ru.pokrovskii.screen.viewmodel.SongScreenPresenter
-import ru.pokrovskii.screen.viewmodel.SongScreenPresenterPreview
+import ru.pokrovskii.screen.song.viewmodel.SongScreenPresenter
+import ru.pokrovskii.screen.song.viewmodel.SongScreenPresenterPreview
 
 @Composable
 internal fun SongScreenContent(
