@@ -6,7 +6,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.pokrovskii.design.song.ToSongUiModel
+import ru.pokrovskii.design.song.SongItemUiModelConverter
 import ru.pokrovskii.screen.search.domain.SearchScreenCenter
 import ru.pokrovskii.screen.search.ui.state.SearchScreenState
 
@@ -23,6 +23,10 @@ internal class SearchScreenViewModel(
 
     fun onQueryChanged(query: String) {
         _query.value = query
+        if (query.isEmpty()) {
+            _state.value = SearchScreenState.Success(listOf())
+            return
+        }
         getSearchResult(query)
     }
 
@@ -39,8 +43,14 @@ internal class SearchScreenViewModel(
             _state.value = if (result == null) {
                 SearchScreenState.Error
             } else {
-                SearchScreenState.Success(result.map(ToSongUiModel::convert))
+                SearchScreenState.Success(result.map(SongItemUiModelConverter::convert))
             }
         }
+    }
+
+    override fun onCleared() {
+        loadJob?.cancel()
+        loadJob = null
+        super.onCleared()
     }
 }

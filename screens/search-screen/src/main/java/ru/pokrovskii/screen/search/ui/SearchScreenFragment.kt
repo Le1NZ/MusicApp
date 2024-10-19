@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.ComposeView
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import ru.pokrovskii.design.theme.AppTheme
@@ -29,7 +29,7 @@ internal class SearchScreenFragment : Fragment() {
             setContent {
                 AppTheme {
                     SearchScreenContent(
-                        state = viewModel.state.collectAsState().value,
+                        state = viewModel.state.collectAsStateWithLifecycle().value,
                         presenter = remember {
                             SearchScreenPresenterImpl(
                                 viewModel = viewModel,

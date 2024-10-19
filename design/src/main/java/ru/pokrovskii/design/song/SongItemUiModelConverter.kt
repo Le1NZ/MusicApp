@@ -2,7 +2,7 @@ package ru.pokrovskii.design.song
 
 import ru.pokrovskii.model.song.MinimizedSong
 
-object ToSongUiModel {
+object SongItemUiModelConverter {
 
     fun convert(song: MinimizedSong): SongItemUiModel {
         return SongItemUiModel(

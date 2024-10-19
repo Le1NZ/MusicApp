@@ -36,11 +36,13 @@ internal class SongScreenPresenterImpl(
     }
 
     override fun onLikeClick() {
-        // TODO
+        // TODO add likes
     }
 
     override fun onToTextButtonClick() {
-        // TODO
+        actions.onToTextButtonClick(
+            url = (state.value as? SongScreenState.Success)?.songUiModel?.songTextUrl ?: return,
+        )
     }
 }
 

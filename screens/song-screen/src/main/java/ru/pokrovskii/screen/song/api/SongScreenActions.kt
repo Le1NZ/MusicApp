@@ -4,4 +4,5 @@ interface SongScreenActions {
 
     fun onFavoriteClick()
     fun onSearchClick()
+    fun onToTextButtonClick(url: String)
 }

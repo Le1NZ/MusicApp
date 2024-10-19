@@ -49,6 +49,7 @@ internal fun SongHeaderInfo(
             fontSize = 36.sp,
             fontWeight = FontWeight.ExtraBold,
             color = MaterialTheme.colorScheme.onBackground,
+            lineHeight = 40.sp,
         )
 
         Row(
@@ -98,10 +99,10 @@ private fun LikeButton(
     AnimatedContent(
         targetState = isLiked,
         modifier = Modifier
+            .clickable(onClick = onLikeClick)
             .clip(CircleShape)
             .background(MaterialTheme.colorScheme.surfaceTint.copy(0.8f))
-            .padding(8.dp)
-            .clickable(onClick = onLikeClick),
+            .padding(8.dp),
         label = "Like button",
     ) { isCurrentLiked ->
         val iconId = if (isCurrentLiked) {

@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,12 +48,13 @@ fun SongItem(
                 modifier = Modifier
                     .padding(end = 8.dp)
                     .clip(RoundedCornerShape(4.dp))
-                    .background(MaterialTheme.colorScheme.onBackground)
+                    .background(MaterialTheme.colorScheme.secondaryContainer)
                     .size(48.dp),
                 model = imageRequestOf(url = url),
                 onState = {
                     Log.d("testing", it.toString()) },
                 contentDescription = null,
+                contentScale = ContentScale.Crop,
             )
         }
 

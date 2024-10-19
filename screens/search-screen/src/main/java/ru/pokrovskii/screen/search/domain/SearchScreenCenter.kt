@@ -1,6 +1,5 @@
 package ru.pokrovskii.screen.search.domain
 
-import android.provider.ContactsContract.Data
 import ru.pokrovskii.model.result.DataOrError
 import ru.pokrovskii.model.song.MinimizedSong
 import ru.pokrovskii.network.search.api.SearchRepository

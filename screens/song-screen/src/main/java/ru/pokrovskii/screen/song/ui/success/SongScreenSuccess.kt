@@ -1,7 +1,10 @@
 package ru.pokrovskii.screen.song.ui.success
 
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -26,48 +29,60 @@ internal fun SongScreenSuccess(
     onToTextButtonClick: () -> Unit,
 ) {
     val song = state.songUiModel
+    val lazyListState = rememberLazyListState()
 
-    LazyColumn {
+    LazyColumn(
+        state = lazyListState,
+    ) {
         item {
             SongHeader(
                 songUiModel = song,
                 onLikeClick = onLikeClick,
+                lazyListState = lazyListState,
             )
         }
 
-        item {
-            SongHotBlock(
-                modifier = Modifier
-                    .padding(vertical = 8.dp),
-            )
+        if (song.isHot) {
+            item {
+                SongHotBlock(
+                    modifier = Modifier
+                        .padding(vertical = 8.dp),
+                )
+            }
         }
         item {
             PrimaryArtistsBlock(
                 modifier = Modifier
-                    .padding(top = 4.dp),
+                    .padding(top = 16.dp),
                 primaryArtists = song.artists
             )
         }
-        item {
-            FeaturedArtistsBlock(
-                modifier = Modifier
-                    .padding(top = 4.dp),
-                featuredArtists = song.featuredArtists,
-            )
+        song.featuredArtists?.let { featuredArtists ->
+            item {
+                FeaturedArtistsBlock(
+                    modifier = Modifier
+                        .padding(top = 16.dp),
+                    featuredArtists = featuredArtists,
+                )
+            }
         }
-        item {
-            SongReleaseDate(
-                modifier = Modifier
-                    .padding(top = 4.dp),
-                releaseDate = song.releaseDate,
-            )
+        song.releaseDate?.let { releaseDate ->
+            item {
+                SongReleaseDate(
+                    modifier = Modifier
+                        .padding(top = 8.dp),
+                    releaseDate = releaseDate,
+                )
+            }
         }
-        item {
-            SongRecordingLocation(
-                modifier = Modifier
-                    .padding(vertical = 4.dp),
-                recordingLocation = song.recordingLocation,
-            )
+        song.recordingLocation?.let { recordingLocation ->
+            item {
+                SongRecordingLocation(
+                    modifier = Modifier
+                        .padding(vertical = 8.dp),
+                    recordingLocation = recordingLocation,
+                )
+            }
         }
         item {
             SongToTextButton(
@@ -76,14 +91,17 @@ internal fun SongScreenSuccess(
                 onClick = onToTextButtonClick,
             )
         }
-
-
+        song.producers?.let { producers ->
+            item {
+                ProducerArtistsBlock(
+                    modifier = Modifier
+                        .padding(top = 16.dp),
+                    producerArtists = producers,
+                )
+            }
+        }
         item {
-            ProducerArtistsBlock(
-                modifier = Modifier
-                    .padding(top = 4.dp),
-                producerArtists = song.producers,
-            )
+            Spacer(modifier = Modifier.navigationBarsPadding())
         }
     }
 }

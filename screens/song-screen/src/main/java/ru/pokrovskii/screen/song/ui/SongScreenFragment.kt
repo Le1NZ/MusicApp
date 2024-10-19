@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.ComposeView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import ru.pokrovskii.design.theme.AppTheme
 import ru.pokrovskii.design.viewmodel.viewModelFactory
@@ -23,7 +24,12 @@ internal class SongScreenFragment : Fragment() {
         requireArguments().getParcelable(KET_ARGS)
     )
     private val dependencies: SongScreenDependencies by inject()
-    private val viewModel: SongScreenViewModel by viewModelFactory { SongScreenViewModel(args) }
+    private val viewModel: SongScreenViewModel by viewModelFactory {
+        SongScreenViewModel(
+            args = args,
+            songScreenCenter = get(),
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,10 +39,13 @@ internal class SongScreenFragment : Fragment() {
             setContent {
                 AppTheme {
                     SongScreenContent(
-                        state = viewModel.state.collectAsState().value,
+                        state = viewModel.state.collectAsStateWithLifecycle().value,
                         presenter = remember {
                             SongScreenPresenterImpl(
-                                actions = dependencies.createActions(parentFragmentManager),
+                                actions = dependencies.createActions(
+                                    fragmentManager = parentFragmentManager,
+                                    context = requireContext(),
+                                ),
                                 viewModel = viewModel,
                             )
                         }
