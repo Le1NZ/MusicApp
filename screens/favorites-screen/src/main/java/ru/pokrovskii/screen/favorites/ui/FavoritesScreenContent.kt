@@ -1,8 +1,11 @@
 package ru.pokrovskii.screen.favorites.ui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import ru.pokrovskii.design.screen.LoadingScreen
 import ru.pokrovskii.design.theme.AppTheme
@@ -19,7 +22,11 @@ internal fun FavoritesScreenContent(
     state: FavoritesScreenState,
     presenter: FavoritesScreenPresenter,
 ) {
-    Column {
+    Column(
+        modifier = Modifier
+            .statusBarsPadding(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
         AppToolbar(
             config = ToolbarConfig(
                 listOf(
