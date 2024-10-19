@@ -9,7 +9,7 @@ object SongItemUiModelConverter {
             id = song.id,
             coverUrl = song.coverUrl,
             title = song.title,
-            artist = song.artist.name,
+            artist = song.artistName,
         )
     }
 }

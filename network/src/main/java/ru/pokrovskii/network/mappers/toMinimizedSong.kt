@@ -8,6 +8,6 @@ internal fun HitDto.toMinimizedSong(): MinimizedSong {
         id = song.id,
         title = song.title,
         coverUrl = song.coverUrl,
-        artist = song.artist.toArtist(),
+        artistName = song.artist.name,
     )
 }

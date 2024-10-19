@@ -1,5 +1,7 @@
 package ru.pokrovskii.implementation.app
 
+import ru.pokrovskii.database.api.DatabaseDi
+import ru.pokrovskii.database.di.DatabaseLocalDi
 import ru.pokrovskii.implementation.favorites.FavoritesScreenDi
 import ru.pokrovskii.implementation.search.SearchScreenDi
 import ru.pokrovskii.implementation.song.SongScreenDi
@@ -17,6 +19,8 @@ internal object AppDi {
         SearchScreenDi.module,
         NetworkLocalDi.module,
         NetworkDi.module,
+        DatabaseDi.module,
+        DatabaseLocalDi.module,
         SearchScreenLocalDi.module,
         SongScreenDi.module,
         SongScreenLocalDi.module,

@@ -1,17 +1,35 @@
 package ru.pokrovskii.screen.favorites.viewmodel
 
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
+import ru.pokrovskii.design.song.SongItemUiModelConverter
 import ru.pokrovskii.screen.favorites.domain.FavoritesScreenCenter
 import ru.pokrovskii.screen.favorites.ui.state.FavoritesScreenState
 
 internal class FavoritesScreenViewModel(
-    private val favoritesScreenCenter: FavoritesScreenCenter,
+    favoritesScreenCenter: FavoritesScreenCenter,
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow<FavoritesScreenState>(FavoritesScreenState.Loading)
-    val state = _state.asStateFlow()
+    private val favoritesSongs = favoritesScreenCenter
+        .allSongs()
+        .map { it.map(SongItemUiModelConverter::convert) }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.Lazily,
+            initialValue = null,
+        )
 
+    val state = favoritesSongs
+        .map {
+            if (it == null) return@map FavoritesScreenState.Loading
+            FavoritesScreenState.Success(it)
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.Lazily,
+            initialValue = FavoritesScreenState.Loading,
+        )
 
 }

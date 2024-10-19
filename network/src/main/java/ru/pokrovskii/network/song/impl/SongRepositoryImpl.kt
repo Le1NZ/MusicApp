@@ -1,5 +1,7 @@
 package ru.pokrovskii.network.song.impl
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import ru.pokrovskii.model.result.DataOrError
 import ru.pokrovskii.model.song.Song
 import ru.pokrovskii.network.mappers.toSong
@@ -12,10 +14,12 @@ internal class SongRepositoryImpl(
 ) : SongRepository {
 
     override suspend fun getSong(id: Int): DataOrError<Song> {
-        return songApi
-            .getSong(id)
-            .toResult {
-                song.toSong()
-            }
+        return withContext(Dispatchers.IO) {
+            songApi
+                .getSong(id)
+                .toResult {
+                    song.toSong()
+                }
+        }
     }
 }

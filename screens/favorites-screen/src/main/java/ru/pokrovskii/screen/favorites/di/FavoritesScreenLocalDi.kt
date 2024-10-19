@@ -6,6 +6,6 @@ import ru.pokrovskii.screen.favorites.domain.FavoritesScreenCenter
 object FavoritesScreenLocalDi {
 
     val module = module {
-        single<FavoritesScreenCenter> { FavoritesScreenCenter() }
+        single<FavoritesScreenCenter> { FavoritesScreenCenter(get()) }
     }
 }
