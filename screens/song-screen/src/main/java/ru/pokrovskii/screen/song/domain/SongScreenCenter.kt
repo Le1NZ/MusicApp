@@ -35,7 +35,7 @@ internal class SongScreenCenter(
 
     fun isSongLiked(id: Int): Flow<Boolean> {
         return likesInteractor
-            .isSongLiked(id)
+            .isSongLikedFlow(id)
     }
 
     fun getSongOrNull(): Song? {

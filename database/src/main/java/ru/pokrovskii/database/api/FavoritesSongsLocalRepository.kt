@@ -5,7 +5,8 @@ import ru.pokrovskii.model.song.MinimizedSong
 
 interface FavoritesSongsLocalRepository {
 
-    fun allSongs(): Flow<List<MinimizedSong>>
+    fun allSongsFlow(): Flow<List<MinimizedSong>>
+    fun allSongs(): List<MinimizedSong>?
     suspend fun addSong(song: MinimizedSong)
     suspend fun deleteSong(song: MinimizedSong)
 }

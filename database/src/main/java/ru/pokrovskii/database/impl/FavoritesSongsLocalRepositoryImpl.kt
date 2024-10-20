@@ -2,6 +2,7 @@ package ru.pokrovskii.database.impl
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import ru.pokrovskii.database.api.FavoritesSongsLocalRepository
@@ -13,8 +14,21 @@ internal class FavoritesSongsLocalRepositoryImpl(
     private val dao: FavoritesSongsDao,
 ) : FavoritesSongsLocalRepository {
 
-    override fun allSongs(): Flow<List<MinimizedSong>> {
-        return dao.getAll().map { it.map(MinimizedSongConverter::convert) }
+    private var likedTracks: List<MinimizedSong>? = null
+
+    override fun allSongsFlow(): Flow<List<MinimizedSong>> {
+        return dao
+            .getAll()
+            .distinctUntilChanged()
+            .map {
+                val currentLikedTracks = it.map(MinimizedSongConverter::convert)
+                likedTracks = currentLikedTracks
+                currentLikedTracks
+            }
+    }
+
+    override fun allSongs(): List<MinimizedSong>? {
+        return likedTracks
     }
 
     override suspend fun addSong(song: MinimizedSong) {

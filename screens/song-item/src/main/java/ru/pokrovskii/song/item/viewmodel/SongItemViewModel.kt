@@ -18,11 +18,11 @@ internal class SongItemViewModel(
 
     fun isLiked(id: Int): StateFlow<Boolean> {
         return center
-            .isSongLiked(id)
+            .isSongLikedFlow(id)
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.Eagerly,
-                initialValue = false,
+                initialValue = center.isSongLiked(id),
             )
     }
 

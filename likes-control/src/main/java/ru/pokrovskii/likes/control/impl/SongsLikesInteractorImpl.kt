@@ -10,6 +10,6 @@ internal class SongsLikesInteractorImpl(
 ) : SongsLikesInteractor {
 
     override fun allSongs(): Flow<List<MinimizedSong>> {
-        return repository.allSongs()
+        return repository.allSongsFlow()
     }
 }

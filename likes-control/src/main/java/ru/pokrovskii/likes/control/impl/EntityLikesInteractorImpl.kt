@@ -20,14 +20,21 @@ internal class EntityLikesInteractorImpl(
             .deleteSong(song)
     }
 
-    override fun isSongLiked(id: Int): Flow<Boolean> {
+    override fun isSongLikedFlow(id: Int): Flow<Boolean> {
         return repository
-            .allSongs()
+            .allSongsFlow()
             .map {
-                val currentSongInLiked = it.firstOrNull { song ->
+                val currentSongIsLiked = it.firstOrNull { song ->
                     song.id == id
                 }
-                currentSongInLiked != null
+                currentSongIsLiked != null
             }
+    }
+
+    override fun isSongLiked(id: Int): Boolean {
+        val currentSongIsLiked = repository
+            .allSongs()
+            ?.firstOrNull { it.id == id }
+        return currentSongIsLiked != null
     }
 }

@@ -16,7 +16,11 @@ internal class SongItemCenter(
         likesInteractor.unlikeSong(song)
     }
 
-    fun isSongLiked(id: Int): Flow<Boolean> {
+    fun isSongLikedFlow(id: Int): Flow<Boolean> {
+        return likesInteractor.isSongLikedFlow(id)
+    }
+
+    fun isSongLiked(id: Int): Boolean {
         return likesInteractor.isSongLiked(id)
     }
 }

@@ -7,5 +7,6 @@ interface EntityLikesInteractor {
 
     suspend fun likeSong(song: MinimizedSong)
     suspend fun unlikeSong(song: MinimizedSong)
-    fun isSongLiked(id: Int): Flow<Boolean>
+    fun isSongLikedFlow(id: Int): Flow<Boolean>
+    fun isSongLiked(id: Int): Boolean
 }

@@ -5,7 +5,6 @@ import ru.pokrovskii.database.di.DatabaseLocalDi
 import ru.pokrovskii.implementation.favorites.FavoritesScreenDi
 import ru.pokrovskii.implementation.search.SearchScreenDi
 import ru.pokrovskii.implementation.song.SongScreenDi
-import ru.pokrovskii.implementation.song_item.SongItemDi
 import ru.pokrovskii.likes.control.api.LikesControlDi
 import ru.pokrovskii.navigation.api.NavigationDi
 import ru.pokrovskii.network.api.NetworkDi
@@ -25,7 +24,6 @@ internal object AppDi {
         DatabaseDi.module,
         DatabaseLocalDi.module,
         LikesControlDi.module,
-        SongItemDi.module,
         SongItemLocalDi.module,
         SearchScreenLocalDi.module,
         SongScreenDi.module,

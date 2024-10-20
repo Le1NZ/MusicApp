@@ -37,9 +37,7 @@ class FavoritesScreenFragment : Fragment() {
                         presenter = remember {
                             FavoritesScreenPresenterImpl(
                                 actions = dependencies.createActions(parentFragmentManager),
-                                songItemComponent = get(),
                                 viewModelStore = viewModelStore,
-                                fragmentManager = parentFragmentManager,
                             )
                         }
                     )
