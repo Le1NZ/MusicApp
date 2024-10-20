@@ -26,15 +26,15 @@ fun LikeButton(
         modifier = modifier
             .clickable(onClick = onLikeClick)
             .clip(CircleShape)
-            .background(MaterialTheme.colorScheme.surfaceTint.copy(0.8f))
+            .background(MaterialTheme.colorScheme.surfaceTint)
             .size(40.dp)
             .padding(8.dp),
         label = "Like button",
     ) { isCurrentLiked ->
-        val iconId = if (isCurrentLiked) {
-            R.drawable.ic_favorites_filled_24
+        val (iconId, color) = if (isCurrentLiked) {
+            R.drawable.ic_favorites_filled_24 to MaterialTheme.colorScheme.onError
         } else {
-            R.drawable.ic_favorites_24
+            R.drawable.ic_favorites_24 to MaterialTheme.colorScheme.inverseOnSurface
         }
 
         Icon(
@@ -42,7 +42,7 @@ fun LikeButton(
                 .size(24.dp),
             painter = painterResource(id = iconId),
             contentDescription = null,
-            tint = MaterialTheme.colorScheme.inverseOnSurface,
+            tint = color,
         )
     }
 }

@@ -23,10 +23,6 @@ internal class SearchScreenViewModel(
 
     fun onQueryChanged(query: String) {
         _query.value = query
-        if (query.isEmpty()) {
-            _state.value = SearchScreenState.Success(listOf())
-            return
-        }
         getSearchResult(query)
     }
 
@@ -39,6 +35,11 @@ internal class SearchScreenViewModel(
 
         loadJob?.cancel()
         loadJob = viewModelScope.launch {
+            if (query.isEmpty()) {
+                _state.value = SearchScreenState.Success(listOf())
+                return@launch
+            }
+
             val result = searchScreenCenter.getSearchResult(query)
             _state.value = if (result == null) {
                 SearchScreenState.Error

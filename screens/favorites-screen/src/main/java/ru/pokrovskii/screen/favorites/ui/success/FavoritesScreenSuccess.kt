@@ -3,6 +3,7 @@ package ru.pokrovskii.screen.favorites.ui.success
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -33,19 +34,18 @@ internal fun FavoritesScreenSuccess(
         return EmptyState()
     }
 
-    LazyColumn {
-        item {
-            Text(
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .padding(bottom = 16.dp),
-                text = stringResource(R.string.your_favorites),
-                fontSize = 30.sp,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground,
-            )
-        }
+    Text(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .padding(bottom = 16.dp),
+        text = stringResource(R.string.your_favorites),
+        fontSize = 30.sp,
+        fontWeight = FontWeight.Bold,
+        color = MaterialTheme.colorScheme.onBackground,
+    )
 
+    LazyColumn {
         items(songs) { song ->
             val songItemPresenter = presenter.createSongItemPresenter(songItem = song.model)
             SongItemWrapper(
