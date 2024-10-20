@@ -3,6 +3,7 @@ package ru.pokrovskii.database.dao
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 import ru.pokrovskii.database.dbo.MinimizedSongDbo
@@ -10,7 +11,7 @@ import ru.pokrovskii.database.dbo.MinimizedSongDbo
 @Dao
 internal interface FavoritesSongsDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSong(song: MinimizedSongDbo)
 
     @Delete
