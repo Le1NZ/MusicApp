@@ -6,7 +6,7 @@ import ru.pokrovskii.screen.song.ui.state.SongUiModel
 
 internal object SongUiModelConverter {
 
-    fun convert(song: Song): SongUiModel {
+    fun convert(song: Song, isLiked: Boolean): SongUiModel {
         return SongUiModel(
             title = song.title,
             recordingLocation = song.recordingLocation,
@@ -14,7 +14,7 @@ internal object SongUiModelConverter {
             featuredArtists = song.featuredArtists?.map(ArtistUiModelConverter::convert),
             producers = song.producers?.map(ArtistUiModelConverter::convert),
             artists = song.artists.map(ArtistUiModelConverter::convert),
-            isLiked = true, // TODO likes
+            isLiked = isLiked,
             isHot = song.isHot,
             pageViewCount = song.pageViewCount,
             coverUrl = song.coverUrl,

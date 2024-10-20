@@ -36,7 +36,7 @@ internal class SongScreenPresenterImpl(
     }
 
     override fun onLikeClick() {
-        // TODO add likes
+        viewModel.onLikeClick()
     }
 
     override fun onToTextButtonClick() {

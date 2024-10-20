@@ -6,6 +6,7 @@ import ru.pokrovskii.network.song.dto.SongDto
 
 internal fun SongDto.toSong(): Song {
     return Song(
+        id = id,
         title = title,
         releaseDate = releaseDate,
         pageViewCount = stats.pageViewCount,

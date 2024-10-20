@@ -6,7 +6,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"
-        android:name="ru.pokrovskii.screen.search.ui.SearchScreenFragment"
+        android:name="ru.pokrovskii.screen.favorites.ui.FavoritesScreenFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

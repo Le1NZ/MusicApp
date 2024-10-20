@@ -6,6 +6,6 @@ import ru.pokrovskii.screen.song.domain.SongScreenCenter
 object SongScreenLocalDi {
 
     val module = module {
-        factory<SongScreenCenter> { SongScreenCenter(get()) }
+        factory<SongScreenCenter> { SongScreenCenter(get(), get()) }
     }
 }

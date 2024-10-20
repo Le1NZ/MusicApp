@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import ru.pokrovskii.network.ArtistDto
 
 internal data class SongDto(
-    @SerializedName("id") val id: Long,
+    @SerializedName("id") val id: Int,
     @SerializedName("title") val title: String,
     @SerializedName("header_image_url") val coverUrl: String?,
     @SerializedName("stats") val stats: StatsDto,
