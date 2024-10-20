@@ -73,7 +73,7 @@ private fun ViewCount(
         modifier = Modifier
             .heightIn(min = 40.dp)
             .clip(CircleShape)
-            .background(MaterialTheme.colorScheme.surfaceTint.copy(0.8f))
+            .background(MaterialTheme.colorScheme.surfaceTint)
             .wrapContentSize(),
     ) {
         Text(
