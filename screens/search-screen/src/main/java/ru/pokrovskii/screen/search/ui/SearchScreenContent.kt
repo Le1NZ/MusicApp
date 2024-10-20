@@ -80,7 +80,7 @@ internal fun SearchScreenContent(
             )
             is SearchScreenState.Success -> SearchScreenSuccess(
                 state = state,
-                onTrackClick = presenter::onTrackClick,
+                presenter = presenter,
             )
         }
     }

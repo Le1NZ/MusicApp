@@ -39,7 +39,7 @@ internal fun FavoritesScreenContent(
             is FavoritesScreenState.Loading -> LoadingScreen()
             is FavoritesScreenState.Success -> FavoritesScreenSuccess(
                 state = state,
-                onSongClick = presenter::onSongClick,
+                presenter = presenter,
             )
         }
     }

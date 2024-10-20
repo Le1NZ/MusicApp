@@ -1,7 +1,8 @@
 package ru.pokrovskii.screen.search.ui.state
 
 import androidx.compose.runtime.Immutable
-import ru.pokrovskii.design.song.SongItemUiModel
+import ru.pokrovskii.model.song.MinimizedSong
+import ru.pokrovskii.song.item.api.model.SongItemUiModel
 
 @Immutable
 internal sealed interface SearchScreenState {
@@ -10,6 +11,12 @@ internal sealed interface SearchScreenState {
     data object Error : SearchScreenState
 
     data class Success(
-        val results: List<SongItemUiModel>,
+        val results: List<SongItem>,
     ) : SearchScreenState
 }
+
+@Immutable
+internal data class SongItem(
+    val model: MinimizedSong,
+    val uiModel: SongItemUiModel,
+)

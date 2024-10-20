@@ -36,8 +36,9 @@ android {
 dependencies {
 
     implementation(project(":design"))
+    implementation(project(":likes-control"))
     implementation(project(":model"))
-    implementation(project(":database"))
+    implementation(project(":screens:song-item"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

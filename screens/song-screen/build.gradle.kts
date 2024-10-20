@@ -39,8 +39,8 @@ android {
 
 dependencies {
 
-    implementation(project(":database"))
     implementation(project(":design"))
+    implementation(project(":likes-control"))
     implementation(project(":model"))
     implementation(project(":network"))
 

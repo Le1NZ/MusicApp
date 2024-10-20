@@ -41,6 +41,7 @@ dependencies {
     implementation(project(":design"))
     implementation(project(":model"))
     implementation(project(":network"))
+    implementation(project(":screens:song-item"))
 
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)

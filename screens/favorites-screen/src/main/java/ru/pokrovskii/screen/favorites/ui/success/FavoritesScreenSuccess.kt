@@ -17,14 +17,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ru.pokrovskii.design.song.SongItem
 import ru.pokrovskii.screen.favorites.R
 import ru.pokrovskii.screen.favorites.ui.state.FavoritesScreenState
+import ru.pokrovskii.screen.favorites.viewmodel.FavoritesScreenPresenter
+import ru.pokrovskii.song.item.api.ui.SongItemWrapper
 
 @Composable
 internal fun FavoritesScreenSuccess(
     state: FavoritesScreenState.Success,
-    onSongClick: (Int) -> Unit,
+    presenter: FavoritesScreenPresenter,
 ) {
 
     val songs = state.songs
@@ -45,10 +46,11 @@ internal fun FavoritesScreenSuccess(
             )
         }
 
-        items(state.songs) { song ->
-            SongItem(
-                model = song,
-                onClick = onSongClick,
+        items(songs) { song ->
+            val songItemPresenter = presenter.createSongItemPresenter(songItem = song.model)
+            SongItemWrapper(
+                model = song.uiModel,
+                presenter = songItemPresenter
             )
         }
 

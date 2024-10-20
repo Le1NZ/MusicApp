@@ -50,7 +50,7 @@ internal class SongScreenViewModel(
     private fun loadSong() {
         loadJob?.cancel()
         loadJob = viewModelScope.launch {
-            val result = songScreenCenter.getSong(args.id)
+            val result = songScreenCenter.loadSong(args.id)
             if (result == null) {
                 _state.value = SongScreenState.Error
             } else {

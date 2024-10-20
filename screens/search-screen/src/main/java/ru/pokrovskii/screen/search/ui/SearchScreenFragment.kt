@@ -34,6 +34,9 @@ internal class SearchScreenFragment : Fragment() {
                             SearchScreenPresenterImpl(
                                 viewModel = viewModel,
                                 actions = dependencies.createActions(parentFragmentManager),
+                                fragmentManager = parentFragmentManager,
+                                songItemComponent = get(),
+                                viewModelStore = viewModelStore,
                             )
                         }
                     )

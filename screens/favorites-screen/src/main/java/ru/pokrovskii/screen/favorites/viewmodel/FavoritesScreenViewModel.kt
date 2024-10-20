@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import ru.pokrovskii.design.song.SongItemUiModelConverter
 import ru.pokrovskii.screen.favorites.domain.FavoritesScreenCenter
+import ru.pokrovskii.screen.favorites.ui.mapper.SongItemConverter
 import ru.pokrovskii.screen.favorites.ui.state.FavoritesScreenState
 
 internal class FavoritesScreenViewModel(
@@ -15,7 +15,7 @@ internal class FavoritesScreenViewModel(
 
     private val favoritesSongs = favoritesScreenCenter
         .allSongs()
-        .map { it.map(SongItemUiModelConverter::convert) }
+        .map { it.map(SongItemConverter::convert) }
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.Lazily,

@@ -16,14 +16,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ru.pokrovskii.design.song.SongItem
 import ru.pokrovskii.screen.search.R
 import ru.pokrovskii.screen.search.ui.state.SearchScreenState
+import ru.pokrovskii.screen.search.viewmodel.SearchScreenPresenter
+import ru.pokrovskii.song.item.api.ui.SongItemWrapper
 
 @Composable
 internal fun SearchScreenSuccess(
     state: SearchScreenState.Success,
-    onTrackClick: (Int) -> Unit,
+    presenter: SearchScreenPresenter,
 ) {
     val songs = state.results
     if (songs.isEmpty()) {
@@ -31,10 +32,11 @@ internal fun SearchScreenSuccess(
     }
 
     LazyColumn {
-        items(state.results) { song ->
-            SongItem(
-                model = song,
-                onClick = onTrackClick,
+        items(songs) { song ->
+            val songItemPresenter = presenter.createSongItemPresenter(songItem = song.model)
+            SongItemWrapper(
+                model = song.uiModel,
+                presenter = songItemPresenter,
             )
         }
 

@@ -36,11 +36,13 @@ android {
 dependencies {
 
     implementation(project(":database"))
+    implementation(project(":likes-control"))
     implementation(project(":model"))
     implementation(project(":navigation"))
     implementation(project(":network"))
     implementation(project(":screens:favorites-screen"))
     implementation(project(":screens:search-screen"))
+    implementation(project(":screens:song-item"))
     implementation(project(":screens:song-screen"))
 
     implementation(libs.androidx.core.ktx)

@@ -6,8 +6,8 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.pokrovskii.design.song.SongItemUiModelConverter
 import ru.pokrovskii.screen.search.domain.SearchScreenCenter
+import ru.pokrovskii.screen.search.ui.mapper.SongItemConverter
 import ru.pokrovskii.screen.search.ui.state.SearchScreenState
 
 internal class SearchScreenViewModel(
@@ -43,7 +43,7 @@ internal class SearchScreenViewModel(
             _state.value = if (result == null) {
                 SearchScreenState.Error
             } else {
-                SearchScreenState.Success(result.map(SongItemUiModelConverter::convert))
+                SearchScreenState.Success(result.map(SongItemConverter::convert))
             }
         }
     }

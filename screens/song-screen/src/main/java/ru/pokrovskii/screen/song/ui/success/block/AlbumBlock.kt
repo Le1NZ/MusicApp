@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -59,6 +60,7 @@ internal fun AlbumBlock(
                         .size(COVER_SIZE),
                     model = imageRequestOf(url = coverUrl),
                     contentDescription = null,
+                    contentScale = ContentScale.Crop,
                 )
             }
 

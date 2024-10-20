@@ -1,4 +1,4 @@
-package ru.pokrovskii.design.song
+package ru.pokrovskii.song.item.api.model
 
 import ru.pokrovskii.model.song.MinimizedSong
 
