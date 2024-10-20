@@ -16,6 +16,7 @@ import ru.pokrovskii.screen.song.ui.state.SongUiModel
 import ru.pokrovskii.screen.song.ui.success.artist.FeaturedArtistsBlock
 import ru.pokrovskii.screen.song.ui.success.artist.PrimaryArtistsBlock
 import ru.pokrovskii.screen.song.ui.success.artist.ProducerArtistsBlock
+import ru.pokrovskii.screen.song.ui.success.block.AlbumBlock
 import ru.pokrovskii.screen.song.ui.success.block.SongHotBlock
 import ru.pokrovskii.screen.song.ui.success.block.SongRecordingLocation
 import ru.pokrovskii.screen.song.ui.success.block.SongReleaseDate
@@ -66,6 +67,15 @@ internal fun SongScreenSuccess(
                 )
             }
         }
+        song.album?.let { album ->
+            item {
+                AlbumBlock(
+                    modifier = Modifier
+                        .padding(top = 16.dp),
+                    album = album
+                )
+            }
+        }
         song.releaseDate?.let { releaseDate ->
             item {
                 SongReleaseDate(
@@ -87,7 +97,7 @@ internal fun SongScreenSuccess(
         item {
             SongToTextButton(
                 modifier = Modifier
-                    .padding(vertical = 8.dp),
+                    .padding(top = 8.dp),
                 onClick = onToTextButtonClick,
             )
         }

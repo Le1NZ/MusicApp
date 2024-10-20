@@ -19,6 +19,9 @@ internal object SongUiModelConverter {
             pageViewCount = song.pageViewCount,
             coverUrl = song.coverUrl,
             songTextUrl = song.songTextUrl,
+            album = song.album?.let { album ->
+                AlbumUiModelConverter.convert(album)
+            }
         )
     }
 }

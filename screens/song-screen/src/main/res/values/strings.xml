@@ -8,4 +8,5 @@
     <string name="recording_location">Место записи: %1$s</string>
     <string name="view_count">Просмотров: %1$s</string>
     <string name="to_song_text">К тексту песни</string>
+    <string name="album">Альбом</string>
 </resources>

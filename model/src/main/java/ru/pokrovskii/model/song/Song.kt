@@ -1,5 +1,6 @@
 package ru.pokrovskii.model.song
 
+import ru.pokrovskii.model.album.Album
 import ru.pokrovskii.model.artist.Artist
 
 data class Song(
@@ -14,6 +15,7 @@ data class Song(
     val artists: List<Artist>,
     val producers: List<Artist>?,
     val featuredArtists: List<Artist>?,
+    val album: Album?,
 ) {
 
     fun toMinimizedSong(): MinimizedSong {

@@ -16,6 +16,7 @@ internal data class SongUiModel(
     val artists: List<ArtistItemUiModel>,
     val featuredArtists: List<ArtistItemUiModel>?,
     val producers: List<ArtistItemUiModel>?,
+    val album: AlbumUiModel?,
 ) {
 
     companion object {
@@ -32,6 +33,7 @@ internal data class SongUiModel(
             producers = listOf(ArtistItemUiModel.PREVIEW),
             artists = listOf(ArtistItemUiModel.PREVIEW),
             featuredArtists = listOf(ArtistItemUiModel.PREVIEW),
+            album = null,
         )
     }
 }
