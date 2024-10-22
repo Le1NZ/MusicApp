@@ -23,6 +23,7 @@ runtime = "1.7.3"
 room = "2.6.1"
 ksp = "2.0.0-1.0.22"
 uiTooling = "1.7.3"
+workRuntimeKtx = "2.9.1"
 
 [libraries]
 androidx-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compiler" }
@@ -32,6 +33,7 @@ androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-view
 androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navVersion" }
 androidx-navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navVersion" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime" }

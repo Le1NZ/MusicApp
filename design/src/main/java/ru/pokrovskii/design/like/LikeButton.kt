@@ -24,8 +24,8 @@ fun LikeButton(
     AnimatedContent(
         targetState = isLiked,
         modifier = modifier
-            .clickable(onClick = onLikeClick)
             .clip(CircleShape)
+            .clickable(onClick = onLikeClick)
             .background(MaterialTheme.colorScheme.surfaceTint)
             .size(40.dp)
             .padding(8.dp),

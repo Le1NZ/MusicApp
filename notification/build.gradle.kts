@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.compose.compiler)
 }
 
 android {
-    namespace = "ru.pokrovskii.implementation"
+    namespace = "ru.pokrovskii.notification"
     compileSdk = 34
 
     defaultConfig {
@@ -35,19 +34,10 @@ android {
 
 dependencies {
 
-    implementation(project(":database"))
-    implementation(project(":likes-control"))
-    implementation(project(":model"))
-    implementation(project(":navigation"))
-    implementation(project(":network"))
-    implementation(project(":notification"))
-    implementation(project(":screens:favorites-screen"))
-    implementation(project(":screens:search-screen"))
-    implementation(project(":screens:song-item"))
-    implementation(project(":screens:song-screen"))
+    implementation(project(":design"))
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.runtime)
+
     // Di
     implementation(libs.koin.android)
 }
