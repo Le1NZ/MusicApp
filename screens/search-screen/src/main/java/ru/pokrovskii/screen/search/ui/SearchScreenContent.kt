@@ -70,7 +70,9 @@ internal fun SearchScreenContent(
                         )
                     }
                 }
-            }
+            },
+            singleLine = true,
+            maxLines = 1,
         )
 
         when (state) {
