@@ -1,5 +1,4 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="favorites_empty_state">Чтобы тут появились песни, лайкните понравившиеся песни в поиске</string>
     <string name="your_favorites">Ваше любимое</string>

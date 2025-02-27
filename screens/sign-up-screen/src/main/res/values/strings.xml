@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="input_e_mail">Введите e-mail</string>
+    <string name="input_password">Введите пароль</string>
+    <string name="input_nickname">Введите никнейм</string>
+    <string name="input_password_again">Введите пароль еще раз</string>
+    <string name="sign_up_account">Зарегистрировать аккаунт</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="already_have_account">Уже есть аккаунт? Войти</string>
+</resources>

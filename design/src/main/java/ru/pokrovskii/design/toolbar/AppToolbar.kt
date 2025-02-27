@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 import ru.pokrovskii.design.R
 import ru.pokrovskii.design.theme.AppTheme
 
-private val MIN_TOOLBAR_HEIGHT = 40.dp
+private val MIN_TOOLBAR_HEIGHT = 56.dp
 
 @Composable
 fun AppToolbar(

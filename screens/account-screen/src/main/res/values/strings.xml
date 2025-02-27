@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile">Профиль</string>
+    <string name="count_liked_songs">Песен в любимом - %1$s</string>
+    <string name="change_nickname">Сменить никнейм</string>
+    <string name="log_out">Выйти</string>
+</resources>
