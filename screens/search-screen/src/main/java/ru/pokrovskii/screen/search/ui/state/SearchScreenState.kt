@@ -13,10 +13,37 @@ internal sealed interface SearchScreenState {
     data class Success(
         val results: List<SongItem>,
     ) : SearchScreenState
+
+    companion object {
+
+        fun forPreview(): SearchScreenState {
+            return Success(
+                results = listOf(
+                    SongItem.forPreview(),
+                    SongItem.forPreview(),
+                    SongItem.forPreview(),
+                    SongItem.forPreview(),
+                    SongItem.forPreview(),
+                    SongItem.forPreview(),
+                )
+            )
+        }
+    }
 }
 
 @Immutable
 internal data class SongItem(
     val model: MinimizedSong,
     val uiModel: SongItemUiModel,
-)
+) {
+
+    companion object {
+
+        fun forPreview(): SongItem {
+            return SongItem(
+                model = MinimizedSong.forPreview(),
+                uiModel = SongItemUiModel.forPreview(),
+            )
+        }
+    }
+}

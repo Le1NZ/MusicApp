@@ -12,10 +12,34 @@ internal sealed interface FavoritesScreenState {
     data class Success(
         val songs: List<SongItem>,
     ) : FavoritesScreenState
+
+    companion object {
+
+        fun forPreview(): FavoritesScreenState {
+            return Success(
+                songs = listOf(
+                    SongItem.forPreview(),
+                    SongItem.forPreview(),
+                    SongItem.forPreview(),
+                )
+            )
+        }
+    }
 }
 
 @Immutable
 data class SongItem(
     val model: MinimizedSong,
     val uiModel: SongItemUiModel,
-)
+) {
+
+    companion object {
+
+        fun forPreview(): SongItem {
+            return SongItem(
+                model = MinimizedSong.forPreview(),
+                uiModel = SongItemUiModel.forPreview(),
+            )
+        }
+    }
+}

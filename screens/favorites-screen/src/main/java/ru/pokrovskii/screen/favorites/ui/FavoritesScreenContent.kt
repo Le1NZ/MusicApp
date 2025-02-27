@@ -1,6 +1,7 @@
 package ru.pokrovskii.screen.favorites.ui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -49,9 +50,12 @@ internal fun FavoritesScreenContent(
 @Preview
 private fun FavoritesScreenContentPreview() {
     AppTheme {
-        Surface {
+        Surface(
+            modifier = Modifier
+                .fillMaxHeight(),
+        ) {
             FavoritesScreenContent(
-                state = FavoritesScreenState.Loading,
+                state = FavoritesScreenState.forPreview(),
                 presenter = FavoritesScreenPresenterPreview(),
             )
         }

@@ -11,4 +11,13 @@ internal interface SongScreenState {
     data class Success(
         val songUiModel: SongUiModel,
     ) : SongScreenState
+
+    companion object {
+
+        fun forPreview(): SongScreenState {
+            return Success(
+                songUiModel = SongUiModel.PREVIEW,
+            )
+        }
+    }
 }

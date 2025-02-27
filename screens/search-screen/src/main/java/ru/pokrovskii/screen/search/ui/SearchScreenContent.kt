@@ -1,6 +1,7 @@
 package ru.pokrovskii.screen.search.ui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -92,9 +93,11 @@ internal fun SearchScreenContent(
 @Preview
 private fun SearchScreenContentPreview() {
     AppTheme {
-        Surface {
+        Surface(
+            modifier = Modifier.fillMaxHeight(),
+        ) {
             SearchScreenContent(
-                state = SearchScreenState.Loading,
+                state = SearchScreenState.forPreview(),
                 presenter = SearchScreenPresenterPreview(),
             )
         }

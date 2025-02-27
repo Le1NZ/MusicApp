@@ -57,7 +57,7 @@ private fun SongScreenContentPreview() {
     AppTheme {
         Surface {
             SongScreenContent(
-                state = SongScreenState.Loading,
+                state = SongScreenState.forPreview(),
                 presenter = SongScreenPresenterPreview(),
             )
         }

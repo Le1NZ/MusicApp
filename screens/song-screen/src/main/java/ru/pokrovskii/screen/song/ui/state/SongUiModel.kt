@@ -27,7 +27,7 @@ internal data class SongUiModel(
             isHot = true,
             isLiked = false,
             pageViewCount = 100,
-            coverUrl = null,
+            coverUrl = "null",
             songTextUrl = "",
             recordingLocation = "Moscow",
             producers = listOf(ArtistItemUiModel.PREVIEW),
