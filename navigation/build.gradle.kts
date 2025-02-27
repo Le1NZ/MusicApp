@@ -35,7 +35,6 @@ android {
 dependencies {
 
     implementation(project(":model"))
-    implementation(project(":notification"))
     implementation(project(":screens:favorites-screen"))
     implementation(project(":screens:search-screen"))
     implementation(project(":screens:song-screen"))

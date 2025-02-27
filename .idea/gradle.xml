@@ -18,8 +18,12 @@
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/screens" />
+            <option value="$PROJECT_DIR$/screens/account-screen" />
             <option value="$PROJECT_DIR$/screens/favorites-screen" />
+            <option value="$PROJECT_DIR$/screens/log-in-screen" />
+            <option value="$PROJECT_DIR$/screens/main-screen" />
             <option value="$PROJECT_DIR$/screens/search-screen" />
+            <option value="$PROJECT_DIR$/screens/sign-up-screen" />
             <option value="$PROJECT_DIR$/screens/song-item" />
             <option value="$PROJECT_DIR$/screens/song-screen" />
           </set>

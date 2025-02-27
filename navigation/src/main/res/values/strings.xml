@@ -2,7 +2,4 @@
 <resources>
     <string name="return_soon">Возвращайтесь скорее!</string>
     <string name="something_went_wrong">Что-то пошло не так…</string>
-    <string name="work_manager_notification_channel">Функция "Провожу до дома"</string>
-    <string name="work_manager_notification_title">Возвращайтесь скорее!</string>
-    <string name="work_manager_notification_subtitle">Мы Вас любим (^_^)</string>
 </resources>
