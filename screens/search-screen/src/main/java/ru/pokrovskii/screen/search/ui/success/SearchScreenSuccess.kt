@@ -25,13 +25,18 @@ import ru.pokrovskii.song.item.api.ui.SongItemWrapper
 internal fun SearchScreenSuccess(
     state: SearchScreenState.Success,
     presenter: SearchScreenPresenter,
+    modifier: Modifier = Modifier,
 ) {
     val songs = state.results
     if (songs.isEmpty()) {
-        return EmptyState()
+        return EmptyState(
+            modifier = modifier,
+        )
     }
 
-    LazyColumn {
+    LazyColumn(
+        modifier = modifier,
+    ) {
         items(songs) { song ->
             val songItemPresenter = presenter.createSongItemPresenter(songItem = song.model)
             SongItemWrapper(
@@ -47,9 +52,11 @@ internal fun SearchScreenSuccess(
 }
 
 @Composable
-private fun EmptyState() {
+private fun EmptyState(
+    modifier: Modifier = Modifier,
+) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .padding(horizontal = 16.dp)
             .fillMaxSize(),
         contentAlignment = Alignment.Center,

@@ -23,9 +23,10 @@ import ru.pokrovskii.design.theme.AppTheme
 @Composable
 fun ErrorScreen(
     onRetryClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
