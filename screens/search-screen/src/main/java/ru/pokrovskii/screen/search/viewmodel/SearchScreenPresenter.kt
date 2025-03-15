@@ -20,6 +20,7 @@ internal interface SearchScreenPresenter {
     fun onFavoritesClick()
     fun onRetryClick()
     fun onQueryChanged(query: String)
+    fun clearHistory()
 
     @Composable
     fun createSongItemPresenter(songItem: MinimizedSong): SongItemPresenter
@@ -45,6 +46,10 @@ internal class SearchScreenPresenterImpl(
         viewModel.onQueryChanged(query)
     }
 
+    override fun clearHistory() {
+        viewModel.clearHistory()
+    }
+
     @Composable
     override fun createSongItemPresenter(songItem: MinimizedSong): SongItemPresenter {
         return SongItemComponent.rememberPresenter(
@@ -54,6 +59,9 @@ internal class SearchScreenPresenterImpl(
 
                 override fun onSongItemClick(id: Int) {
                     actions.openSongScreen(id)
+                    viewModel.onSongClick(
+                        song = songItem,
+                    )
                 }
             }
         )
@@ -67,6 +75,7 @@ internal class SearchScreenPresenterPreview : SearchScreenPresenter {
     override fun onFavoritesClick() = Unit
     override fun onRetryClick() = Unit
     override fun onQueryChanged(query: String) = Unit
+    override fun clearHistory() = Unit
 
     @Composable
     override fun createSongItemPresenter(songItem: MinimizedSong): SongItemPresenter {
