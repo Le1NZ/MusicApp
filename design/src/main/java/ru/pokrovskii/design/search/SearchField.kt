@@ -20,8 +20,6 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextRange
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.pokrovskii.design.R
@@ -40,12 +38,6 @@ fun SearchField(
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
     val focusRequester = remember { FocusRequester() }
-    val textFieldValue = remember(query) {
-        TextFieldValue(
-            text = query,
-            selection = TextRange(query.length),
-        )
-    }
 
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
@@ -57,8 +49,8 @@ fun SearchField(
             .padding(vertical = 8.dp)
             .padding(horizontal = 16.dp)
             .fillMaxWidth(),
-        value = textFieldValue,
-        onValueChange = { newQuery -> onQueryChanged(newQuery.text) },
+        value = query,
+        onValueChange = onQueryChanged,
         placeholder = { Text(text = placeholderText) },
         trailingIcon = {
             if (query.isNotEmpty()) {
