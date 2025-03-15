@@ -10,14 +10,26 @@ internal sealed interface SearchScreenState {
     data object Loading : SearchScreenState
     data object Error : SearchScreenState
 
-    data class Success(
-        val results: List<SongItem>,
-    ) : SearchScreenState
+    sealed interface Success : SearchScreenState {
+
+        data class Result(
+            val results: List<SongItem>,
+        ) : Success
+
+        sealed interface History : Success {
+
+            data object Empty : History
+
+            data class Data(
+                val history: List<SongItem>,
+            ) : History
+        }
+    }
 
     companion object {
 
         fun forPreview(): SearchScreenState {
-            return Success(
+            return Success.Result(
                 results = listOf(
                     SongItem.forPreview(),
                     SongItem.forPreview(),

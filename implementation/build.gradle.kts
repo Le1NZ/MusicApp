@@ -44,6 +44,7 @@ dependencies {
     implementation(project(":screens:search-screen"))
     implementation(project(":screens:song-item"))
     implementation(project(":screens:song-screen"))
+    implementation(project(":storage"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.runtime)

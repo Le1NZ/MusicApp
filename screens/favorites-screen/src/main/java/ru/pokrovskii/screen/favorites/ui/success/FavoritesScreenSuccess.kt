@@ -46,11 +46,16 @@ internal fun FavoritesScreenSuccess(
     )
 
     LazyColumn {
-        items(songs) { song ->
+        items(
+            items = songs,
+            key = { item -> item.model.id },
+        ) { song ->
             val songItemPresenter = presenter.createSongItemPresenter(songItem = song.model)
             SongItemWrapper(
                 model = song.uiModel,
-                presenter = songItemPresenter
+                presenter = songItemPresenter,
+                modifier = Modifier
+                    .animateItem(),
             )
         }
 

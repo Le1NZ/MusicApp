@@ -1,7 +1,6 @@
 package ru.pokrovskii.implementation.app
 
-import ru.pokrovskii.database.api.DatabaseDi
-import ru.pokrovskii.database.di.DatabaseLocalDi
+import ru.pokrovskii.database.di.DatabaseDi
 import ru.pokrovskii.implementation.favorites.FavoritesScreenDi
 import ru.pokrovskii.implementation.search.SearchScreenDi
 import ru.pokrovskii.implementation.song.SongScreenDi
@@ -13,6 +12,7 @@ import ru.pokrovskii.screen.favorites.di.FavoritesScreenLocalDi
 import ru.pokrovskii.screen.search.di.SearchScreenLocalDi
 import ru.pokrovskii.screen.song.di.SongScreenLocalDi
 import ru.pokrovskii.song.item.di.SongItemLocalDi
+import ru.pokrovskii.storage.di.StorageDi
 
 internal object AppDi {
 
@@ -22,7 +22,7 @@ internal object AppDi {
         NetworkLocalDi.module,
         NetworkDi.module,
         DatabaseDi.module,
-        DatabaseLocalDi.module,
+        StorageDi.module,
         LikesControlDi.module,
         SongItemLocalDi.module,
         SearchScreenLocalDi.module,

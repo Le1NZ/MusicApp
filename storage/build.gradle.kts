@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.compose.compiler)
 }
 
 android {
-    namespace = "ru.pokrovskii.screen.search"
+    namespace = "ru.pokrovskii.storage"
     compileSdk = 34
 
     defaultConfig {
@@ -31,38 +30,16 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
 
-    implementation(project(":design"))
-    implementation(project(":model"))
-    implementation(project(":network"))
-    implementation(project(":screens:song-item"))
-    implementation(project(":storage"))
-
-    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.fragment.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-
-    // Compose
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.material3)
-    implementation(libs.ui)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.androidx.runtime)
-    implementation(libs.androidx.compiler)
-
-    // Di
-    implementation(libs.koin.android)
+    implementation(libs.androidx.appcompat)
 
     // DataStore
     implementation(libs.androidx.datastore.preferences)
 
-    // Gson
-    implementation(libs.converter.gson)
+    // Di
+    implementation(libs.koin.android)
 }
