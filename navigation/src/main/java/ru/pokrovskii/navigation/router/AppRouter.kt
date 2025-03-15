@@ -7,11 +7,17 @@ import ru.pokrovskii.navigation.api.Router
 
 internal class AppRouter(
     private val fragmentManager: FragmentManager,
-): Router {
+) : Router {
 
     override fun openScreen(screen: Screen) {
         fragmentManager
             .beginTransaction()
+            .setCustomAnimations(
+                /* enter = */ R.anim.slide_in,
+                /* exit = */ R.anim.fade_out,
+                /* popEnter = */ R.anim.fade_in,
+                /* popExit = */ R.anim.slide_out,
+            )
             .replace(R.id.fragment_container, screen.resolveFragment())
             .addToBackStack(null)
             .commit()
