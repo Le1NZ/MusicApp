@@ -10,4 +10,5 @@ internal data class MinimizedSongDbo(
     @ColumnInfo("title") val title: String,
     @ColumnInfo("cover_url") val coverUrl: String?,
     @ColumnInfo("artist_name") val artistName: String,
+    @ColumnInfo("timestamp") val timestamp: Long = System.currentTimeMillis(),
 )

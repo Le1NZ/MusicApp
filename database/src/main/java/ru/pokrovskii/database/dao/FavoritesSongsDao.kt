@@ -17,6 +17,6 @@ internal interface FavoritesSongsDao {
     @Delete
     suspend fun deleteSong(song: MinimizedSongDbo)
 
-    @Query("SELECT * FROM favorite_songs")
+    @Query("SELECT * FROM favorite_songs ORDER BY timestamp DESC")
     fun getAll(): Flow<List<MinimizedSongDbo>>
 }

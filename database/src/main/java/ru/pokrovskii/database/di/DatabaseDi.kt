@@ -5,6 +5,7 @@ import org.koin.dsl.module
 import ru.pokrovskii.database.api.FavoritesSongsLocalRepository
 import ru.pokrovskii.database.db.FavoriteSongsDb
 import ru.pokrovskii.database.impl.FavoritesSongsLocalRepositoryImpl
+import ru.pokrovskii.database.migration.Migrations
 
 object DatabaseDi {
 
@@ -14,7 +15,9 @@ object DatabaseDi {
                 context = get(),
                 klass = FavoriteSongsDb::class.java,
                 name = "favorite_songs",
-            ).build()
+            )
+                .addMigrations(Migrations.MIGRATION_1_2)
+                .build()
         }
 
         single<FavoritesSongsLocalRepository> {

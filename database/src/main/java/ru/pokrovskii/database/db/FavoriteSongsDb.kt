@@ -7,7 +7,7 @@ import ru.pokrovskii.database.dbo.MinimizedSongDbo
 
 @Database(
     entities = [MinimizedSongDbo::class],
-    version = 1,
+    version = 2,
     exportSchema = false,
 )
 internal abstract class FavoriteSongsDb : RoomDatabase() {
