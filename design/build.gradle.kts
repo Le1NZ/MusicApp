@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
-    id("kotlin-parcelize")
 }
 
 android {
@@ -60,9 +59,6 @@ dependencies {
 
     // DataStore
     implementation(libs.androidx.datastore.preferences)
-
-    // Gson
-    implementation(libs.converter.gson)
 
     // Di
     implementation(libs.koin.android)
