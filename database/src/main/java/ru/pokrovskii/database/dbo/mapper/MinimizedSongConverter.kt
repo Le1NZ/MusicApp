@@ -11,6 +11,7 @@ internal object MinimizedSongConverter {
             title = song.title,
             coverUrl = song.coverUrl,
             artistName = song.artistName,
+            timestamp = System.currentTimeMillis(),
         )
     }
 
