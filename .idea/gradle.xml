@@ -26,6 +26,7 @@
             <option value="$PROJECT_DIR$/screens/sign-up-screen" />
             <option value="$PROJECT_DIR$/screens/song-item" />
             <option value="$PROJECT_DIR$/screens/song-screen" />
+            <option value="$PROJECT_DIR$/storage" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

@@ -10,7 +10,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.android.get
-import ru.pokrovskii.design.theme.AppTheme
+import ru.pokrovskii.design.theme.api.AppTheme
 import ru.pokrovskii.design.viewmodel.viewModelFactory
 import ru.pokrovskii.screen.favorites.api.FavoritesScreenDependencies
 import ru.pokrovskii.screen.favorites.viewmodel.FavoritesScreenPresenterImpl

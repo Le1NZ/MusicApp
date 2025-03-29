@@ -12,6 +12,10 @@ internal class SearchScreenActionsImpl(
         router.openScreen(Screen.Favorites)
     }
 
+    override fun onAccountClick() {
+        router.openScreen(Screen.Account)
+    }
+
     override fun openSongScreen(id: Int) {
         router.openScreen(Screen.Song(id))
     }

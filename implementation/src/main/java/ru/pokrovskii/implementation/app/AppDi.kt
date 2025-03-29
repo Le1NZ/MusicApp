@@ -1,6 +1,9 @@
 package ru.pokrovskii.implementation.app
 
+import ru.pokrovskii.account_screen.di.AccountScreenLocalDi
 import ru.pokrovskii.database.di.DatabaseDi
+import ru.pokrovskii.design.di.DesignDi
+import ru.pokrovskii.implementation.account.AccountScreenDi
 import ru.pokrovskii.implementation.favorites.FavoritesScreenDi
 import ru.pokrovskii.implementation.search.SearchScreenDi
 import ru.pokrovskii.implementation.song.SongScreenDi
@@ -17,6 +20,7 @@ import ru.pokrovskii.storage.di.StorageDi
 internal object AppDi {
 
     val modules = listOf(
+        DesignDi.module,
         NavigationDi.module,
         SearchScreenDi.module,
         NetworkLocalDi.module,
@@ -30,5 +34,7 @@ internal object AppDi {
         SongScreenLocalDi.module,
         FavoritesScreenDi.module,
         FavoritesScreenLocalDi.module,
+        AccountScreenDi.module,
+        AccountScreenLocalDi.module,
     )
 }

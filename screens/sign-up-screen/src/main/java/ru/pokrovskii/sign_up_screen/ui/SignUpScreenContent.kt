@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.pokrovskii.design.R
-import ru.pokrovskii.design.theme.AppTheme
+import ru.pokrovskii.design.theme.api.AppTheme
 import ru.pokrovskii.design.toolbar.AppToolbar
 import ru.pokrovskii.design.toolbar.ToolbarConfig
 import ru.pokrovskii.sign_up_screen.R.string

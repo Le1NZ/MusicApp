@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import ru.pokrovskii.design.coil.imageRequestOf
-import ru.pokrovskii.design.theme.AppTheme
+import ru.pokrovskii.design.theme.api.AppTheme
 
 @Composable
 fun ArtistItem(

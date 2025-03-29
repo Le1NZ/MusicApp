@@ -23,7 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.pokrovskii.design.R
-import ru.pokrovskii.design.theme.AppTheme
+import ru.pokrovskii.design.theme.api.AppTheme
 
 
 @OptIn(ExperimentalLayoutApi::class)

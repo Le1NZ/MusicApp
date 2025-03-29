@@ -23,4 +23,10 @@ sealed interface ToolbarIcon {
         override val iconRes = R.drawable.ic_favorites_24
     }
 
+    data class Account(
+        override val onClick: () -> Unit,
+    ) : ToolbarIcon {
+
+        override val iconRes = R.drawable.ic_account_24
+    }
 }

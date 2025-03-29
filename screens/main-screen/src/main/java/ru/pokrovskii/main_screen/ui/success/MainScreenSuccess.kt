@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import ru.pokrovskii.design.theme.AppTheme
+import ru.pokrovskii.design.theme.api.AppTheme
 import ru.pokrovskii.design.toolbar.AppToolbar
 import ru.pokrovskii.design.toolbar.ToolbarConfig
 import ru.pokrovskii.design.toolbar.ToolbarIcon

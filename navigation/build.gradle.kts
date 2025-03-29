@@ -35,6 +35,8 @@ android {
 dependencies {
 
     implementation(project(":model"))
+    implementation(project(":design"))
+    implementation(project(":screens:account-screen"))
     implementation(project(":screens:favorites-screen"))
     implementation(project(":screens:search-screen"))
     implementation(project(":screens:song-screen"))

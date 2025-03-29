@@ -36,10 +36,12 @@ android {
 dependencies {
 
     implementation(project(":database"))
+    implementation(project(":design"))
     implementation(project(":likes-control"))
     implementation(project(":model"))
     implementation(project(":navigation"))
     implementation(project(":network"))
+    implementation(project(":screens:account-screen"))
     implementation(project(":screens:favorites-screen"))
     implementation(project(":screens:search-screen"))
     implementation(project(":screens:song-item"))
@@ -48,6 +50,7 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.runtime)
+
     // Di
     implementation(libs.koin.android)
 }

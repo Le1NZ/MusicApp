@@ -17,7 +17,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.pokrovskii.design.screen.ErrorScreen
 import ru.pokrovskii.design.screen.LoadingScreen
 import ru.pokrovskii.design.search.SearchField
-import ru.pokrovskii.design.theme.AppTheme
+import ru.pokrovskii.design.theme.api.AppTheme
 import ru.pokrovskii.design.toolbar.AppToolbar
 import ru.pokrovskii.design.toolbar.ToolbarConfig
 import ru.pokrovskii.design.toolbar.ToolbarIcon
@@ -43,6 +43,7 @@ internal fun SearchScreenContent(
             config = ToolbarConfig(
                 icons = listOf(
                     ToolbarIcon.Favorites(presenter::onFavoritesClick),
+                    ToolbarIcon.Account(presenter::onAccountClick),
                 )
             )
         )

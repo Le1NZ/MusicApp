@@ -22,7 +22,7 @@ import coil3.compose.AsyncImage
 import ru.pokrovskii.design.coil.imageRequestOf
 import ru.pokrovskii.design.modifier.alpha
 import ru.pokrovskii.design.modifier.parallaxEffect
-import ru.pokrovskii.design.theme.AppTheme
+import ru.pokrovskii.design.theme.api.AppTheme
 import ru.pokrovskii.screen.song.ui.state.SongUiModel
 
 @Composable

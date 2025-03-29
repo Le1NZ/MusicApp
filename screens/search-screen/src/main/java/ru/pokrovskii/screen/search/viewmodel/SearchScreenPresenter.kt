@@ -18,6 +18,7 @@ internal interface SearchScreenPresenter {
     val query: StateFlow<String>
 
     fun onFavoritesClick()
+    fun onAccountClick()
     fun onRetryClick()
     fun onQueryChanged(query: String)
     fun clearHistory()
@@ -36,6 +37,10 @@ internal class SearchScreenPresenterImpl(
 
     override fun onFavoritesClick() {
         actions.onFavoritesClick()
+    }
+
+    override fun onAccountClick() {
+        actions.onAccountClick()
     }
 
     override fun onRetryClick() {
@@ -73,6 +78,7 @@ internal class SearchScreenPresenterPreview : SearchScreenPresenter {
     override val query = MutableStateFlow("")
 
     override fun onFavoritesClick() = Unit
+    override fun onAccountClick() = Unit
     override fun onRetryClick() = Unit
     override fun onQueryChanged(query: String) = Unit
     override fun clearHistory() = Unit

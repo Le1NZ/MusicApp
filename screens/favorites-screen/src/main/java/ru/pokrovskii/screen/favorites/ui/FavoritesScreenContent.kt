@@ -9,7 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import ru.pokrovskii.design.screen.LoadingScreen
-import ru.pokrovskii.design.theme.AppTheme
+import ru.pokrovskii.design.theme.api.AppTheme
 import ru.pokrovskii.design.toolbar.AppToolbar
 import ru.pokrovskii.design.toolbar.ToolbarConfig
 import ru.pokrovskii.design.toolbar.ToolbarIcon
@@ -32,6 +32,7 @@ internal fun FavoritesScreenContent(
             config = ToolbarConfig(
                 listOf(
                     ToolbarIcon.Search(presenter::onSearchClick),
+                    ToolbarIcon.Account(presenter::onAccountClick),
                 )
             )
         )

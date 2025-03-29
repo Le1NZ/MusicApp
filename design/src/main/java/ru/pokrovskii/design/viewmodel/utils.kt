@@ -21,6 +21,7 @@ inline fun <reified VM : ViewModel> ViewModelStore.viewModelFactory(
     return ViewModelLazy(VM::class, { this }, { simpleViewModelFactory(factory) })
 }
 
+@Suppress("UNCHECKED_CAST") // It's ok
 inline fun <T : ViewModel> simpleViewModelFactory(crossinline factory: () -> T): ViewModelProvider.Factory {
     return object : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {

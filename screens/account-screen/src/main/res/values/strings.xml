@@ -4,4 +4,8 @@
     <string name="count_liked_songs">Песен в любимом - %1$s</string>
     <string name="change_nickname">Сменить никнейм</string>
     <string name="log_out">Выйти</string>
+    <string name="application_theme">Текущая тема</string>
+    <string name="system_theme">Системная</string>
+    <string name="dark_theme">Темная</string>
+    <string name="light_theme">Светлая</string>
 </resources>

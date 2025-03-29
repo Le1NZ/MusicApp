@@ -12,6 +12,7 @@ import ru.pokrovskii.song.item.api.ui.SongItemPresenterPreview
 internal interface FavoritesScreenPresenter {
 
     fun onSearchClick()
+    fun onAccountClick()
 
     @Composable
     fun createSongItemPresenter(songItem: MinimizedSong): SongItemPresenter
@@ -24,6 +25,10 @@ internal class FavoritesScreenPresenterImpl(
 
     override fun onSearchClick() {
         actions.onSearchClick()
+    }
+
+    override fun onAccountClick() {
+        actions.onAccountClick()
     }
 
     @Composable
@@ -44,6 +49,7 @@ internal class FavoritesScreenPresenterImpl(
 internal class FavoritesScreenPresenterPreview : FavoritesScreenPresenter {
 
     override fun onSearchClick() = Unit
+    override fun onAccountClick() = Unit
 
     @Composable
     override fun createSongItemPresenter(songItem: MinimizedSong): SongItemPresenter {
