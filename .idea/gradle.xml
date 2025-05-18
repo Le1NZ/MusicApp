@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/screens" />
             <option value="$PROJECT_DIR$/screens/account-screen" />
+            <option value="$PROJECT_DIR$/screens/artist-screen" />
             <option value="$PROJECT_DIR$/screens/favorites-screen" />
             <option value="$PROJECT_DIR$/screens/log-in-screen" />
             <option value="$PROJECT_DIR$/screens/main-screen" />

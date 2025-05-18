@@ -1,4 +1,4 @@
-package ru.pokrovskii.screen.song.ui.success.header
+package ru.pokrovskii.design.header
 
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable

@@ -4,7 +4,7 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 data class ArtistItemUiModel(
-    val id: Int,
+    val id: String,
     val name: String,
     val coverUrl: String?,
 ) {
@@ -12,7 +12,7 @@ data class ArtistItemUiModel(
     companion object {
 
         val PREVIEW = ArtistItemUiModel(
-            id = 1,
+            id = "1",
             name = "Markul",
             coverUrl = null,
         )

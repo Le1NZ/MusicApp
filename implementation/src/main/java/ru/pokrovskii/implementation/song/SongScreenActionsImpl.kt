@@ -27,4 +27,10 @@ internal class SongScreenActionsImpl(
         )
         context.startActivity(urlIntent)
     }
+
+    override fun onArtistClick(id: String) {
+        router.openScreen(
+            screen = Screen.Artist(id = id),
+        )
+    }
 }

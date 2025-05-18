@@ -42,6 +42,7 @@ dependencies {
     implementation(project(":navigation"))
     implementation(project(":network"))
     implementation(project(":screens:account-screen"))
+    implementation(project(":screens:artist-screen"))
     implementation(project(":screens:favorites-screen"))
     implementation(project(":screens:search-screen"))
     implementation(project(":screens:song-item"))

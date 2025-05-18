@@ -16,6 +16,7 @@ internal interface SongScreenPresenter {
     fun onRetryClick()
     fun onLikeClick()
     fun onToTextButtonClick()
+    fun onArtistClick(id: String)
 }
 
 internal class SongScreenPresenterImpl(
@@ -44,6 +45,10 @@ internal class SongScreenPresenterImpl(
             url = (state.value as? SongScreenState.Success)?.songUiModel?.songTextUrl ?: return,
         )
     }
+
+    override fun onArtistClick(id: String) {
+        actions.onArtistClick(id = id)
+    }
 }
 
 internal class SongScreenPresenterPreview : SongScreenPresenter {
@@ -55,4 +60,5 @@ internal class SongScreenPresenterPreview : SongScreenPresenter {
     override fun onRetryClick() = Unit
     override fun onLikeClick() = Unit
     override fun onToTextButtonClick() = Unit
+    override fun onArtistClick(id: String) = Unit
 }

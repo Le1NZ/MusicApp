@@ -1,6 +1,7 @@
 package ru.pokrovskii.design.artist
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -25,10 +26,15 @@ import ru.pokrovskii.design.theme.api.AppTheme
 @Composable
 fun ArtistItem(
     model: ArtistItemUiModel,
+    onClick: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier
+            .clip(CircleShape)
+            .clickable(
+                onClick = { onClick(model.id) }
+            )
             .heightIn(min = 48.dp)
             .padding(horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -60,7 +66,10 @@ fun ArtistItem(
 private fun ArtistItemPreview() {
     AppTheme {
         Surface {
-            ArtistItem(model = ArtistItemUiModel.PREVIEW)
+            ArtistItem(
+                model = ArtistItemUiModel.PREVIEW,
+                onClick = {},
+            )
         }
     }
 }

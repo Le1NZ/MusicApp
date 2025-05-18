@@ -6,6 +6,10 @@ sealed interface Screen {
         val id: Int,
     ) : Screen
 
+    data class Artist(
+        val id: String
+    ) : Screen
+
     data object Search : Screen
     data object Favorites : Screen
     data object Account : Screen

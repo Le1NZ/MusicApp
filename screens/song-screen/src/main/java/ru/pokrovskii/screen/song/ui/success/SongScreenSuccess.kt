@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -22,14 +23,16 @@ import ru.pokrovskii.screen.song.ui.success.block.SongRecordingLocation
 import ru.pokrovskii.screen.song.ui.success.block.SongReleaseDate
 import ru.pokrovskii.screen.song.ui.success.block.SongToTextButton
 import ru.pokrovskii.screen.song.ui.success.header.SongHeader
+import ru.pokrovskii.screen.song.viewmodel.SongScreenPresenter
+import ru.pokrovskii.screen.song.viewmodel.SongScreenPresenterPreview
 
 @Composable
 internal fun SongScreenSuccess(
     state: SongScreenState.Success,
-    onLikeClick: () -> Unit,
+    presenter: SongScreenPresenter,
     onToTextButtonClick: () -> Unit,
 ) {
-    val song = state.songUiModel
+    val song = remember(state) { state.songUiModel }
     val lazyListState = rememberLazyListState()
 
     LazyColumn(
@@ -38,7 +41,7 @@ internal fun SongScreenSuccess(
         item {
             SongHeader(
                 songUiModel = song,
-                onLikeClick = onLikeClick,
+                onLikeClick = presenter::onLikeClick,
                 lazyListState = lazyListState,
             )
         }
@@ -55,7 +58,8 @@ internal fun SongScreenSuccess(
             PrimaryArtistsBlock(
                 modifier = Modifier
                     .padding(top = 16.dp),
-                primaryArtists = song.artists
+                primaryArtists = song.artists,
+                onArtistClick = presenter::onArtistClick,
             )
         }
         song.featuredArtists?.let { featuredArtists ->
@@ -64,6 +68,7 @@ internal fun SongScreenSuccess(
                     modifier = Modifier
                         .padding(top = 16.dp),
                     featuredArtists = featuredArtists,
+                    onArtistClick = presenter::onArtistClick,
                 )
             }
         }
@@ -107,6 +112,7 @@ internal fun SongScreenSuccess(
                     modifier = Modifier
                         .padding(top = 16.dp),
                     producerArtists = producers,
+                    onArtistClick = presenter::onArtistClick,
                 )
             }
         }
@@ -125,7 +131,7 @@ private fun SongScreenSuccessPreview() {
                 state = SongScreenState.Success(
                     songUiModel = SongUiModel.PREVIEW,
                 ),
-                onLikeClick = {},
+                presenter = SongScreenPresenterPreview(),
                 onToTextButtonClick = {},
             )
         }

@@ -18,33 +18,39 @@ import ru.pokrovskii.screen.song.R
 @Composable
 internal fun PrimaryArtistsBlock(
     primaryArtists: List<ArtistItemUiModel>,
+    onArtistClick: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     ArtistsBlock(
         title = stringResource(R.string.primary_artists),
         artists = primaryArtists,
+        onArtistClick = onArtistClick,
         modifier = modifier,
     )
 }
 @Composable
 internal fun FeaturedArtistsBlock(
     featuredArtists: List<ArtistItemUiModel>,
+    onArtistClick: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     ArtistsBlock(
         title = stringResource(R.string.featured_artists),
         artists = featuredArtists,
+        onArtistClick = onArtistClick,
         modifier = modifier,
     )
 }
 @Composable
 internal fun ProducerArtistsBlock(
     producerArtists: List<ArtistItemUiModel>,
+    onArtistClick: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     ArtistsBlock(
         title = stringResource(R.string.producer_artists),
         artists = producerArtists,
+        onArtistClick = onArtistClick,
         modifier = modifier,
     )
 }
@@ -53,6 +59,7 @@ internal fun ProducerArtistsBlock(
 private fun ArtistsBlock(
     title: String,
     artists: List<ArtistItemUiModel>,
+    onArtistClick: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -72,6 +79,7 @@ private fun ArtistsBlock(
             ArtistItem(
                 modifier = Modifier
                     .padding(top = 8.dp),
+                onClick = onArtistClick,
                 model = artist,
             )
         }
