@@ -3,6 +3,7 @@ package ru.pokrovskii.design.artist
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -31,12 +32,12 @@ fun ArtistItem(
 ) {
     Row(
         modifier = modifier
-            .heightIn(min = 48.dp)
-            .padding(horizontal = 16.dp)
-            .clip(CircleShape)
             .clickable(
                 onClick = { onClick(model.id) }
-            ),
+            )
+            .heightIn(min = 48.dp)
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         model.coverUrl?.let {
