@@ -27,7 +27,12 @@ internal class ArtistScreenViewModel(
         loadArtist()
     }
 
-    fun loadArtist() {
+    fun onRetryClick() {
+        _state.value = ArtistScreenState.Loading
+        loadArtist()
+    }
+
+    private fun loadArtist() {
         loadJob?.cancel()
         loadJob = viewModelScope.launch {
             val result = center.getArtist(id = id)

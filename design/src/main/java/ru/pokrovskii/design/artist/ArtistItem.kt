@@ -31,12 +31,12 @@ fun ArtistItem(
 ) {
     Row(
         modifier = modifier
+            .heightIn(min = 48.dp)
+            .padding(horizontal = 16.dp)
             .clip(CircleShape)
             .clickable(
                 onClick = { onClick(model.id) }
-            )
-            .heightIn(min = 48.dp)
-            .padding(horizontal = 16.dp),
+            ),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         model.coverUrl?.let {

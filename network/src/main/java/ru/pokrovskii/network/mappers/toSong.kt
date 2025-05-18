@@ -15,8 +15,8 @@ internal fun SongDto.toSong(): Song {
         songTextUrl = textUrl,
         recordingLocation = recordingLocation,
         artists = primaryArtists.map { it.toArtist() },
-        producers = producerArtists.takeIfNotNull()?.map { it.toArtist() },
-        featuredArtists = featuredArtists.takeIfNotNull()?.map { it.toArtist() },
+        producers = producerArtists?.takeIfNotNull()?.map { it.toArtist() },
+        featuredArtists = featuredArtists?.takeIfNotNull()?.map { it.toArtist() },
         album = album?.toAlbum(),
     )
 }

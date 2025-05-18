@@ -2,10 +2,11 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    id("kotlin-parcelize")
 }
 
 android {
-    namespace = "ru.pokrovskii.implementation"
+    namespace = "ru.pokrovskii.screen.artist.songs"
     compileSdk = 34
 
     defaultConfig {
@@ -35,22 +36,25 @@ android {
 
 dependencies {
 
-    implementation(project(":database"))
     implementation(project(":design"))
-    implementation(project(":likes-control"))
     implementation(project(":model"))
-    implementation(project(":navigation"))
     implementation(project(":network"))
-    implementation(project(":screens:account-screen"))
-    implementation(project(":screens:artist-screen"))
-    implementation(project(":screens:artist-songs-screen"))
-    implementation(project(":screens:favorites-screen"))
-    implementation(project(":screens:search-screen"))
     implementation(project(":screens:song-item"))
-    implementation(project(":screens:song-screen"))
-    implementation(project(":storage"))
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+
+    // Coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
+    // Compose
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.material3)
+    implementation(libs.ui)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.androidx.compiler)
     implementation(libs.androidx.runtime)
 
     // Di

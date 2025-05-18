@@ -25,11 +25,16 @@ internal class ArtistScreenPresenterImpl(
     override val state = viewModel.state
 
     override fun onRetryClick() {
-        viewModel.loadArtist()
+        viewModel.onRetryClick()
     }
 
     override fun onAllSongsClick() {
-        actions.onAllSongsClick(id = viewModel.id)
+        val successState = state.value as? ArtistScreenState.Success ?: return
+
+        actions.onAllSongsClick(
+            id = viewModel.id,
+            name =  successState.artist.name,
+        )
     }
 
     override fun onSearchClick() {

@@ -10,6 +10,11 @@ sealed interface Screen {
         val id: String
     ) : Screen
 
+    data class ArtistSongs(
+        val id: String,
+        val name: String,
+    ) : Screen
+
     data object Search : Screen
     data object Favorites : Screen
     data object Account : Screen

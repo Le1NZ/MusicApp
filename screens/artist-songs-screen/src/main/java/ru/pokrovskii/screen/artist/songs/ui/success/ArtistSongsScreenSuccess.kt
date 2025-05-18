@@ -1,4 +1,4 @@
-package ru.pokrovskii.screen.favorites.ui.success
+package ru.pokrovskii.screen.artist.songs.ui.success
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
@@ -19,15 +19,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ru.pokrovskii.screen.favorites.R
-import ru.pokrovskii.screen.favorites.ui.state.FavoritesScreenState
-import ru.pokrovskii.screen.favorites.viewmodel.FavoritesScreenPresenter
+import ru.pokrovskii.screen.artist.songs.R
+import ru.pokrovskii.screen.artist.songs.ui.state.ArtistSongsScreenState
+import ru.pokrovskii.screen.artist.songs.viewmodel.ArtistSongsScreenPresenter
 import ru.pokrovskii.song.item.api.ui.SongItemWrapper
 
 @Composable
-internal fun FavoritesScreenSuccess(
-    state: FavoritesScreenState.Success,
-    presenter: FavoritesScreenPresenter,
+internal fun ArtistSongsScreenSuccess(
+    state: ArtistSongsScreenState.Success,
+    presenter: ArtistSongsScreenPresenter,
 ) {
     val songs = remember(state) { state.songs }
     if (songs.isEmpty()) {
@@ -39,7 +39,7 @@ internal fun FavoritesScreenSuccess(
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
             .padding(bottom = 16.dp),
-        text = stringResource(R.string.your_favorites),
+        text = state.artistName,
         fontSize = 30.sp,
         fontWeight = FontWeight.Bold,
         color = MaterialTheme.colorScheme.onBackground,
@@ -74,7 +74,7 @@ private fun EmptyState() {
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            text = stringResource(R.string.favorites_empty_state),
+            text = stringResource(R.string.no_songs),
             fontSize = 20.sp,
             color = MaterialTheme.colorScheme.primary,
             textAlign = TextAlign.Center,

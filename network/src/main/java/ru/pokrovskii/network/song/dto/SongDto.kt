@@ -14,6 +14,6 @@ internal data class SongDto(
     @SerializedName("recording_location") val recordingLocation: String?,
     @SerializedName("url") val textUrl: String,
     @SerializedName("primary_artists") val primaryArtists: List<ArtistDto>,
-    @SerializedName("featured_artists") val featuredArtists: List<ArtistDto>,
-    @SerializedName("producer_artists") val producerArtists: List<ArtistDto>,
+    @SerializedName("featured_artists") val featuredArtists: List<ArtistDto>?,
+    @SerializedName("producer_artists") val producerArtists: List<ArtistDto>?,
 )

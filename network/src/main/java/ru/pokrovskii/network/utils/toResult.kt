@@ -1,5 +1,6 @@
 package ru.pokrovskii.network.utils
 
+import android.util.Log
 import retrofit2.Call
 import retrofit2.awaitResponse
 import ru.pokrovskii.model.result.DataOrError
@@ -18,6 +19,7 @@ internal suspend fun <T, R> Call<BackendResponse<T>>.toResult(
             DataOrError.Error
         }
     } catch (e: Exception) {
+        Log.d("testing", "error: $e")
         DataOrError.Error
     }
 }

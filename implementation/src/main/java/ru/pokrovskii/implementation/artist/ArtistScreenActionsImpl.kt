@@ -8,8 +8,13 @@ internal class ArtistScreenActionsImpl(
     private val router: Router,
 ) : ArtistScreenActions {
 
-    override fun onAllSongsClick(id: String) {
-        /* Not yet */
+    override fun onAllSongsClick(id: String, name: String) {
+        router.openScreen(
+            screen = Screen.ArtistSongs(
+                id = id,
+                name = name,
+            ),
+        )
     }
 
     override fun onSearchClick() {
