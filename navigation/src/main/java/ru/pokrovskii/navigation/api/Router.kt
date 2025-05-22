@@ -4,7 +4,10 @@ import ru.pokrovskii.model.screen.Screen
 
 interface Router {
 
-    fun openScreen(screen: Screen)
+    fun openScreen(
+        screen: Screen,
+        needAddToBackStack: Boolean = true,
+    )
 
     fun close()
 }

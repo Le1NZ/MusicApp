@@ -4,16 +4,21 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.pokrovskii.network.Config
+import ru.pokrovskii.network.UserServerConfig
 import ru.pokrovskii.network.artist.ArtistApi
 import ru.pokrovskii.network.artist_songs.ArtistSongsApi
+import ru.pokrovskii.network.auth.AuthApi
 import ru.pokrovskii.network.search.SearchApi
 import ru.pokrovskii.network.song.SongApi
+
+private typealias GeniusRetrofit = Retrofit
+private typealias UserRetrofit = Retrofit
 
 object NetworkLocalDi {
 
     val module = module {
 
-        single<Retrofit> {
+        single<GeniusRetrofit> {
             Retrofit
                 .Builder()
                 .baseUrl(Config.BASE_URL)
@@ -21,9 +26,19 @@ object NetworkLocalDi {
                 .build()
         }
 
-        single<SearchApi> { get<Retrofit>().create(SearchApi::class.java) }
-        single<SongApi> { get<Retrofit>().create(SongApi::class.java) }
-        single<ArtistApi> { get<Retrofit>().create(ArtistApi::class.java) }
-        single<ArtistSongsApi> { get<Retrofit>().create(ArtistSongsApi::class.java) }
+        single<UserRetrofit> {
+            Retrofit
+                .Builder()
+                .baseUrl(UserServerConfig.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
+
+        single<SearchApi> { get<GeniusRetrofit>().create(SearchApi::class.java) }
+        single<SongApi> { get<GeniusRetrofit>().create(SongApi::class.java) }
+        single<ArtistApi> { get<GeniusRetrofit>().create(ArtistApi::class.java) }
+        single<ArtistSongsApi> { get<GeniusRetrofit>().create(ArtistSongsApi::class.java) }
+
+        single<AuthApi> { get<UserRetrofit>().create(AuthApi::class.java) }
     }
 }

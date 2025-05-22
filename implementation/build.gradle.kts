@@ -35,6 +35,7 @@ android {
 
 dependencies {
 
+    implementation(project(":auth"))
     implementation(project(":database"))
     implementation(project(":design"))
     implementation(project(":likes-control"))
@@ -47,6 +48,7 @@ dependencies {
     implementation(project(":screens:favorites-screen"))
     implementation(project(":screens:search-screen"))
     implementation(project(":screens:song-item"))
+    implementation(project(":screens:log-in-screen"))
     implementation(project(":screens:song-screen"))
     implementation(project(":storage"))
 

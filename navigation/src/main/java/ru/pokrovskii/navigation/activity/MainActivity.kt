@@ -7,15 +7,24 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
+import ru.pokrovskii.auth.api.UserCenter
 import ru.pokrovskii.design.theme.api.AppThemeInteractor
 import ru.pokrovskii.design.theme.api.AppThemeState
+import ru.pokrovskii.model.auth.isAuthorized
+import ru.pokrovskii.model.screen.Screen
 import ru.pokrovskii.navigation.R
-
+import ru.pokrovskii.navigation.api.NavigationComponent
 
 internal class MainActivity : AppCompatActivity() {
 
     private val themeInteractor by inject<AppThemeInteractor>()
+    private val userCenter by inject<UserCenter>()
+    private val router by lazy {
+        get<NavigationComponent>().createRouter(supportFragmentManager)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +32,20 @@ internal class MainActivity : AppCompatActivity() {
 
         collectWindowInsetsColor()
         setContentView(R.layout.activity_main)
+
+        if (savedInstanceState == null) {
+            val isAuthorized = userCenter.currentUserBlocking().isAuthorized()
+            val pendingScreen = if (isAuthorized) {
+                Screen.Favorites
+            } else {
+                Screen.Login
+            }
+
+            router.openScreen(
+                screen = pendingScreen,
+                needAddToBackStack = false,
+            )
+        }
     }
 
     private fun collectWindowInsetsColor() {

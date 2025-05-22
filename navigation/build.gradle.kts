@@ -34,6 +34,7 @@ android {
 
 dependencies {
 
+    implementation(project(":auth"))
     implementation(project(":model"))
     implementation(project(":design"))
     implementation(project(":screens:account-screen"))
@@ -42,6 +43,7 @@ dependencies {
     implementation(project(":screens:favorites-screen"))
     implementation(project(":screens:search-screen"))
     implementation(project(":screens:song-screen"))
+    implementation(project(":screens:log-in-screen"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

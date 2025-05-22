@@ -2,6 +2,7 @@ package ru.pokrovskii.navigation.router
 
 import androidx.fragment.app.Fragment
 import ru.pokrovskii.account_screen.api.AccountScreenApi
+import ru.pokrovskii.log_in_screen.api.LoginScreenApi
 import ru.pokrovskii.model.screen.Screen
 import ru.pokrovskii.screen.artist.api.ArtistScreenApi
 import ru.pokrovskii.screen.artist.songs.api.ArtistSongsScreenApi
@@ -33,5 +34,6 @@ internal fun Screen.resolveFragment(): Fragment {
         is Screen.Search -> SearchScreenApi.createFragment()
         is Screen.Favorites -> FavoritesScreenApi.createFragment()
         is Screen.Account -> AccountScreenApi.createFragment()
+        is Screen.Login -> LoginScreenApi.createFragment()
     }
 }
