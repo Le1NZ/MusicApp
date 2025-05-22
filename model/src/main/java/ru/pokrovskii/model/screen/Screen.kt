@@ -18,5 +18,7 @@ sealed interface Screen {
     data object Search : Screen
     data object Favorites : Screen
     data object Account : Screen
+
     data object Login : Screen
+    data object SignUp : Screen
 }

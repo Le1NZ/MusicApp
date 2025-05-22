@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":screens:search-screen"))
     implementation(project(":screens:song-item"))
     implementation(project(":screens:log-in-screen"))
+    implementation(project(":screens:sign-up-screen"))
     implementation(project(":screens:song-screen"))
     implementation(project(":storage"))
 

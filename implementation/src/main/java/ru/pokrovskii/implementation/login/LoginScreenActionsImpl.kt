@@ -1,4 +1,4 @@
-package ru.pokrovskii.implementation.auth
+package ru.pokrovskii.implementation.login
 
 import ru.pokrovskii.log_in_screen.api.LoginScreenActions
 import ru.pokrovskii.model.screen.Screen
@@ -10,5 +10,9 @@ internal class LoginScreenActionsImpl(
 
     override fun onLoginSuccess() {
         router.openScreen(Screen.Favorites)
+    }
+
+    override fun toSignUp() {
+        router.openScreen(Screen.SignUp)
     }
 }

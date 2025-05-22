@@ -1,4 +1,4 @@
-package ru.pokrovskii.implementation.auth
+package ru.pokrovskii.implementation.login
 
 import androidx.fragment.app.FragmentManager
 import ru.pokrovskii.log_in_screen.api.LoginScreenActions

@@ -1,4 +1,4 @@
-package ru.pokrovskii.log_in_screen.viewmodel
+package ru.pokrovskii.sign_up_screen.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,22 +9,22 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import ru.pokrovskii.auth.api.UserCenter
-import ru.pokrovskii.log_in_screen.domain.LoginScreenCenter
-import ru.pokrovskii.log_in_screen.ui.state.LoginScreenEvent
 import ru.pokrovskii.model.result.DataOrError
+import ru.pokrovskii.sign_up_screen.domain.SignUpScreenCenter
+import ru.pokrovskii.sign_up_screen.ui.state.SignUpScreenEvent
 
-internal class LoginScreenViewModel(
-    private val center: LoginScreenCenter,
+internal class SignUpScreenViewModel(
+    private val center: SignUpScreenCenter,
     userCenterLazy: Lazy<UserCenter>,
 ) : ViewModel() {
 
     private val userCenter by userCenterLazy
 
-    private val _events = MutableSharedFlow<LoginScreenEvent>()
-    val events: SharedFlow<LoginScreenEvent> = _events
+    private val _events = MutableSharedFlow<SignUpScreenEvent>()
+    val events: SharedFlow<SignUpScreenEvent> = _events
 
-    private val _isLoginInProgress = MutableStateFlow(false)
-    val isLoginInProgress: StateFlow<Boolean> = _isLoginInProgress
+    private val _isSignUpInProgress = MutableStateFlow(false)
+    val isSignUpInProgress: StateFlow<Boolean> = _isSignUpInProgress
 
     private val _loginText = MutableStateFlow("")
     val loginText: StateFlow<String> = _loginText
@@ -32,12 +32,15 @@ internal class LoginScreenViewModel(
     private val _passwordText = MutableStateFlow("")
     val passwordText: StateFlow<String> = _passwordText
 
+    private val _passwordAgainText = MutableStateFlow("")
+    val passwordAgainText: StateFlow<String> = _passwordAgainText
+
     private var loginJob: Job? = null
 
-    fun startLogin() {
+    fun startSignUp() {
         loginJob?.cancel()
         loginJob = viewModelScope.launch {
-            login()
+            signUp()
         }
     }
 
@@ -49,9 +52,20 @@ internal class LoginScreenViewModel(
         _passwordText.value = text
     }
 
-    private suspend fun login() {
-        _isLoginInProgress.value = true
-        val result = center.login(
+    fun onPasswordAgainTextChanged(text: String) {
+        _passwordAgainText.value = text
+    }
+
+    private suspend fun signUp() {
+        _isSignUpInProgress.value = true
+
+        if (passwordAgainText.value != passwordText.value) {
+            _events.emit(SignUpScreenEvent.PasswordsNotMatches)
+            _isSignUpInProgress.value = false
+            return
+        }
+
+        val result = center.signUp(
             login = loginText.value,
             password = passwordText.value,
         )
@@ -59,12 +73,12 @@ internal class LoginScreenViewModel(
         val event = when (result) {
             is DataOrError.Data -> {
                 userCenter.login(userInfo = result.data)
-                LoginScreenEvent.LoginSuccess
+                SignUpScreenEvent.SignUpSuccess
             }
-            is DataOrError.Error -> LoginScreenEvent.LoginFailed
+            is DataOrError.Error -> SignUpScreenEvent.SignUpFailed
         }
 
         _events.emit(event)
-        _isLoginInProgress.value = false
+        _isSignUpInProgress.value = false
     }
 }

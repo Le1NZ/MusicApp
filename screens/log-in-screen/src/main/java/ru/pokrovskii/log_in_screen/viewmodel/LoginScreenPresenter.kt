@@ -1,5 +1,6 @@
 package ru.pokrovskii.log_in_screen.viewmodel
 
+import androidx.compose.runtime.Stable
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -7,6 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import ru.pokrovskii.log_in_screen.api.LoginScreenActions
 import ru.pokrovskii.log_in_screen.ui.state.LoginScreenEvent
 
+@Stable
 internal interface LoginScreenPresenter {
 
     val loginText: StateFlow<String>
@@ -19,6 +21,7 @@ internal interface LoginScreenPresenter {
     val isLoginInProgress: StateFlow<Boolean>
 
     fun login()
+    fun toSignUp()
     fun onLoginSuccess()
 }
 
@@ -45,6 +48,10 @@ internal class LoginScreenPresenterImpl(
         viewModel.startLogin()
     }
 
+    override fun toSignUp() {
+        actions.toSignUp()
+    }
+
     override fun onLoginSuccess() {
         actions.onLoginSuccess()
     }
@@ -62,5 +69,7 @@ internal class LoginScreenPresenterPreview : LoginScreenPresenter {
     override val isLoginInProgress = MutableStateFlow(false)
 
     override fun login() = Unit
+    override fun toSignUp() = Unit
+
     override fun onLoginSuccess() = Unit
 }

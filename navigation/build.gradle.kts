@@ -44,6 +44,7 @@ dependencies {
     implementation(project(":screens:search-screen"))
     implementation(project(":screens:song-screen"))
     implementation(project(":screens:log-in-screen"))
+    implementation(project(":screens:sign-up-screen"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -1,8 +1,10 @@
 package ru.pokrovskii.log_in_screen.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.text.ClickableText
@@ -81,24 +83,28 @@ internal fun LoginScreenContent(
                 .weight(1f)
         )
 
-        ClickableText(
+        Text(
             modifier = Modifier
+                .clickable(onClick = presenter::toSignUp)
                 .padding(horizontal = 16.dp)
                 .padding(bottom = 16.dp),
-            text = AnnotatedString(stringResource(string.not_have_account)),
-            onClick = { },
+            text = stringResource(string.not_have_account),
+            color = MaterialTheme.colorScheme.onBackground,
         )
 
+        val isLoginInProgress by presenter.isLoginInProgress.collectAsStateWithLifecycle()
         Button(
             modifier = Modifier
+                .height(60.dp)
                 .fillMaxWidth()
                 .padding(bottom = 16.dp)
                 .padding(horizontal = 16.dp),
             onClick = presenter::login,
         ) {
-            val isLoginInProgress by presenter.isLoginInProgress.collectAsStateWithLifecycle()
             if (isLoginInProgress) {
-                CircularProgressIndicator()
+                CircularProgressIndicator(
+                    color = MaterialTheme.colorScheme.onSecondary,
+                )
             } else {
                 Text(
                     text = stringResource(string.log_in),

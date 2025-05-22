@@ -7,9 +7,10 @@ import ru.pokrovskii.design.di.DesignDi
 import ru.pokrovskii.implementation.account.AccountScreenDi
 import ru.pokrovskii.implementation.artist.ArtistScreenDi
 import ru.pokrovskii.implementation.artist_songs.ArtistSongsScreenDi
-import ru.pokrovskii.implementation.auth.LoginScreenDi
+import ru.pokrovskii.implementation.login.LoginScreenDi
 import ru.pokrovskii.implementation.favorites.FavoritesScreenDi
 import ru.pokrovskii.implementation.search.SearchScreenDi
+import ru.pokrovskii.implementation.sign_up.SignUpScreenDi
 import ru.pokrovskii.implementation.song.SongScreenDi
 import ru.pokrovskii.likes.control.api.LikesControlDi
 import ru.pokrovskii.log_in_screen.di.LoginScreenLocalDi
@@ -21,6 +22,7 @@ import ru.pokrovskii.screen.artist.songs.di.ArtistSongsScreenLocalDi
 import ru.pokrovskii.screen.favorites.di.FavoritesScreenLocalDi
 import ru.pokrovskii.screen.search.di.SearchScreenLocalDi
 import ru.pokrovskii.screen.song.di.SongScreenLocalDi
+import ru.pokrovskii.sign_up_screen.di.SignUpScreenLocalDi
 import ru.pokrovskii.song.item.di.SongItemLocalDi
 import ru.pokrovskii.storage.di.StorageDi
 
@@ -41,6 +43,8 @@ internal object AppDi {
         SongScreenDi.module,
         LoginScreenDi.module,
         LoginScreenLocalDi.module,
+        SignUpScreenDi.module,
+        SignUpScreenLocalDi.module,
         SongScreenLocalDi.module,
         FavoritesScreenDi.module,
         FavoritesScreenLocalDi.module,

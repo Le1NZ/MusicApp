@@ -9,6 +9,7 @@ import ru.pokrovskii.screen.artist.songs.api.ArtistSongsScreenApi
 import ru.pokrovskii.screen.favorites.api.FavoritesScreenApi
 import ru.pokrovskii.screen.search.api.SearchScreenApi
 import ru.pokrovskii.screen.song.api.SongScreenApi
+import ru.pokrovskii.sign_up_screen.api.SignUpScreenApi
 
 internal fun Screen.resolveFragment(): Fragment {
     return when (this) {
@@ -34,6 +35,8 @@ internal fun Screen.resolveFragment(): Fragment {
         is Screen.Search -> SearchScreenApi.createFragment()
         is Screen.Favorites -> FavoritesScreenApi.createFragment()
         is Screen.Account -> AccountScreenApi.createFragment()
+
         is Screen.Login -> LoginScreenApi.createFragment()
+        is Screen.SignUp -> SignUpScreenApi.createFragment()
     }
 }
