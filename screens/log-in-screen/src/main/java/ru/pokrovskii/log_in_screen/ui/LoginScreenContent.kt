@@ -100,6 +100,7 @@ internal fun LoginScreenContent(
                 .padding(bottom = 16.dp)
                 .padding(horizontal = 16.dp),
             onClick = presenter::login,
+            enabled = !isLoginInProgress,
         ) {
             if (isLoginInProgress) {
                 CircularProgressIndicator(

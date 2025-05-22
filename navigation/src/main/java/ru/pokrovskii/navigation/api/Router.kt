@@ -6,6 +6,7 @@ interface Router {
 
     fun openScreen(
         screen: Screen,
+        clearBackStack: Boolean = false,
         needAddToBackStack: Boolean = true,
     )
 

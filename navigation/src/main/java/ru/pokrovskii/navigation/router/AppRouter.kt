@@ -12,6 +12,7 @@ internal class AppRouter(
 
     override fun openScreen(
         screen: Screen,
+        clearBackStack: Boolean,
         needAddToBackStack: Boolean,
     ) {
         fragmentManager.commit {
@@ -27,6 +28,10 @@ internal class AppRouter(
             }
 
             replace(R.id.fragment_container, screen.resolveFragment())
+
+            if (clearBackStack) {
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            }
         }
     }
 

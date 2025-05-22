@@ -15,4 +15,11 @@ internal class AccountScreenActionsImpl(
     override fun onFavoritesClick() {
         router.openScreen(Screen.Favorites)
     }
+
+    override fun onLogout() {
+        router.openScreen(
+            screen = Screen.Login,
+            clearBackStack = true,
+        )
+    }
 }

@@ -4,4 +4,5 @@ interface AccountScreenActions {
 
     fun onSearchClick()
     fun onFavoritesClick()
+    fun onLogout()
 }

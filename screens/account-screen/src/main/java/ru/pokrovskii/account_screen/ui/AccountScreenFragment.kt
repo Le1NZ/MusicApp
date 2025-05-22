@@ -22,6 +22,7 @@ internal class AccountScreenFragment: Fragment() {
     private val viewModel by viewModelFactory {
         AccountScreenViewModel(
             center = get(),
+            userCenterLazy = inject(),
         )
     }
 
