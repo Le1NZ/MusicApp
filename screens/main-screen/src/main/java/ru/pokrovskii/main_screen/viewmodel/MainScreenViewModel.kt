@@ -25,7 +25,7 @@ internal class MainScreenViewModel(
     private val _state = MutableStateFlow<MainScreenState>(MainScreenState.Loading)
     val state: StateFlow<MainScreenState> = _state
 
-    val isAdmin = userCenter
+    val canEdit = userCenter
         .users
         .map { user ->
             user?.isAdmin ?: false
@@ -49,13 +49,95 @@ internal class MainScreenViewModel(
         }
     }
 
+    fun onSongDelete(id: Int, blockId: String) {
+        _state.value = MainScreenState.Loading
+        loadJob?.cancel()
+        loadJob = viewModelScope.launch {
+            val result = center.deleteSong(
+                blockId = blockId,
+                id = id,
+            )
+
+            _state.value = if (result == null) {
+                MainScreenState.Error
+            } else {
+                MainScreenState.Success(
+                    blocks = result.map { it.toLandingBlockState(canEdit = canEdit.value) },
+                )
+            }
+        }
+    }
+
+    fun onBlockTitleChanged(id: String, newTitle: String) {
+        _state.value = MainScreenState.Loading
+        loadJob?.cancel()
+        loadJob = viewModelScope.launch {
+            val result = center.changeTitle(
+                blockId = id,
+                newTitle = newTitle,
+            )
+
+            _state.value = if (result == null) {
+                MainScreenState.Error
+            } else {
+                MainScreenState.Success(
+                    blocks = result.map { it.toLandingBlockState(canEdit = canEdit.value) },
+                )
+            }
+        }
+    }
+
+    fun onSongAdd(
+        id: Int,
+        title: String,
+        artist: String,
+        imageUrl: String,
+        blockId: String,
+    ) {
+        _state.value = MainScreenState.Loading
+        loadJob?.cancel()
+        loadJob = viewModelScope.launch {
+            val result = center.addSong(
+                id = id,
+                blockId = blockId,
+                title = title,
+                artist = artist,
+                imageUrl = imageUrl,
+            )
+
+            _state.value = if (result == null) {
+                MainScreenState.Error
+            } else {
+                MainScreenState.Success(
+                    blocks = result.map { it.toLandingBlockState(canEdit = canEdit.value) },
+                )
+            }
+        }
+    }
+
+    fun onBlockAdd() {
+        _state.value = MainScreenState.Loading
+        loadJob?.cancel()
+        loadJob = viewModelScope.launch {
+            val result = center.addBlock()
+
+            _state.value = if (result == null) {
+                MainScreenState.Error
+            } else {
+                MainScreenState.Success(
+                    blocks = result.map { it.toLandingBlockState(canEdit = canEdit.value) },
+                )
+            }
+        }
+    }
+
     private suspend fun loadLanding() {
         val result = center.loadLanding()
         _state.value = if (result == null) {
             MainScreenState.Error
         } else {
             MainScreenState.Success(
-                blocks = result.map { it.toLandingBlockState() },
+                blocks = result.map { it.toLandingBlockState(canEdit = canEdit.value) },
             )
         }
     }

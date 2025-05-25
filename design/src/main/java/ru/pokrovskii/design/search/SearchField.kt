@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.isImeVisible
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
@@ -20,6 +21,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.pokrovskii.design.R
@@ -33,6 +35,8 @@ fun SearchField(
     onQueryChanged: (String) -> Unit,
     placeholderText: String,
     modifier: Modifier = Modifier,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    isNeedToRequestFocus: Boolean = true,
 ) {
     val imeIsVisible = WindowInsets.isImeVisible
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -40,7 +44,9 @@ fun SearchField(
     val focusRequester = remember { FocusRequester() }
 
     LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
+        if (isNeedToRequestFocus) {
+            focusRequester.requestFocus()
+        }
     }
 
     TextField(
@@ -76,6 +82,9 @@ fun SearchField(
                     keyboardController?.show()
                 }
             },
+        ),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardType,
         ),
         singleLine = true,
         maxLines = 1,

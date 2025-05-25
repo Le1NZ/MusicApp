@@ -7,7 +7,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -17,20 +20,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import ru.pokrovskii.design.theme.api.AppTheme
+import ru.pokrovskii.main_screen.R
 import ru.pokrovskii.main_screen.state.LandingSongState
+import ru.pokrovskii.main_screen.ui.edit.canEdit
 
 private val MIN_HEIGHT = 300.dp
 
 @Composable
 internal fun LandingBlockSong(
-    song: LandingSongState,
+    song: LandingSongState.Song,
     onClick: (Int) -> Unit,
+    onSongDelete: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -65,6 +72,47 @@ internal fun LandingBlockSong(
                 subtitle = song.artist,
             )
         }
+
+        if (canEdit) {
+            IconButton(
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .wrapContentSize(),
+                onClick = { onSongDelete(song.id) },
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.baseline_delete_outline_24),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onBackground,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+internal fun AddLandingBlockSong(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier
+            .clip(
+                shape = RoundedCornerShape(8),
+            )
+            .clickable(
+                onClick = onClick,
+            )
+            .heightIn(min = MIN_HEIGHT)
+            .background(Color.Gray)
+            .fillMaxWidth(),
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            painter = painterResource(id = R.drawable.baseline_add_24),
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onBackground,
+        )
     }
 }
 
@@ -106,6 +154,7 @@ private fun SkeletonBlockSongPreview() {
             LandingBlockSong(
                 song = LandingSongState.forPreview(id = 1),
                 onClick = { },
+                onSongDelete = { },
             )
         }
     }

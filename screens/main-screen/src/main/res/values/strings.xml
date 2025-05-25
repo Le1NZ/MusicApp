@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_title">Добавьте заголовок</string>
+    <string name="add_image_url">Добавьте ссылку на картинку</string>
+    <string name="add_id">Добавьте id песни</string>
+    <string name="add_artist">Добавьте артиста</string>
+    <string name="add">Добавить</string>
+    <string name="edit_title">Изменить заголовок</string>
+    <string name="add_block">Добавить блок</string>
+    <string name="edit">Изменить</string>
+</resources>

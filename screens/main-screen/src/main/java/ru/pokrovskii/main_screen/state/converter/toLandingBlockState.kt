@@ -5,16 +5,20 @@ import ru.pokrovskii.main_screen.state.LandingSongState
 import ru.pokrovskii.model.landing.LandingBlock
 import ru.pokrovskii.model.landing.LandingSong
 
-internal fun LandingBlock.toLandingBlockState(): LandingBlockState {
+internal fun LandingBlock.toLandingBlockState(canEdit: Boolean): LandingBlockState {
     return LandingBlockState(
         id = id,
         title = title,
-        songs = songs.map { it.toLandingSongState() },
+        songs = songs.map { it.toLandingSongState() }.toMutableList().also {
+            if (canEdit) {
+                it.add(LandingSongState.Add)
+            }
+        },
     )
 }
 
 private fun LandingSong.toLandingSongState(): LandingSongState {
-    return LandingSongState(
+    return LandingSongState.Song(
         id = id,
         imageUrl = imageUrl,
         title = title,
