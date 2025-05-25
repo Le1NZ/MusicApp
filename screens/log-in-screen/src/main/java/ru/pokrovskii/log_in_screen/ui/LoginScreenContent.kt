@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -24,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -95,7 +93,7 @@ internal fun LoginScreenContent(
         val isLoginInProgress by presenter.isLoginInProgress.collectAsStateWithLifecycle()
         Button(
             modifier = Modifier
-                .height(60.dp)
+                .height(100.dp)
                 .fillMaxWidth()
                 .padding(bottom = 16.dp)
                 .padding(horizontal = 16.dp),
@@ -104,7 +102,7 @@ internal fun LoginScreenContent(
         ) {
             if (isLoginInProgress) {
                 CircularProgressIndicator(
-                    color = MaterialTheme.colorScheme.onSecondary,
+                    color = MaterialTheme.colorScheme.onBackground,
                 )
             } else {
                 Text(

@@ -99,7 +99,7 @@ internal fun SignUpScreenContent(
         val isSignUpInProgress by presenter.isSignUpInProgress.collectAsStateWithLifecycle()
         Button(
             modifier = Modifier
-                .height(60.dp)
+                .height(100.dp)
                 .fillMaxWidth()
                 .padding(bottom = 16.dp)
                 .padding(horizontal = 16.dp),
@@ -108,7 +108,7 @@ internal fun SignUpScreenContent(
         ) {
             if (isSignUpInProgress) {
                 CircularProgressIndicator(
-                    color = MaterialTheme.colorScheme.onSecondary,
+                    color = MaterialTheme.colorScheme.onBackground,
                 )
             } else {
                 Text(

@@ -8,6 +8,7 @@ import ru.pokrovskii.network.UserServerConfig
 import ru.pokrovskii.network.artist.ArtistApi
 import ru.pokrovskii.network.artist_songs.ArtistSongsApi
 import ru.pokrovskii.network.auth.AuthApi
+import ru.pokrovskii.network.landing.LandingApi
 import ru.pokrovskii.network.search.SearchApi
 import ru.pokrovskii.network.song.SongApi
 
@@ -40,5 +41,6 @@ object NetworkLocalDi {
         single<ArtistSongsApi> { get<GeniusRetrofit>().create(ArtistSongsApi::class.java) }
 
         single<AuthApi> { get<UserRetrofit>().create(AuthApi::class.java) }
+        single<LandingApi> { get<UserRetrofit>().create(LandingApi::class.java) }
     }
 }

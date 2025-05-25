@@ -9,7 +9,10 @@ internal class LoginScreenActionsImpl(
 ) : LoginScreenActions {
 
     override fun onLoginSuccess() {
-        router.openScreen(Screen.Favorites)
+        router.openScreen(
+            screen = Screen.Landing,
+            clearBackStack = true,
+        )
     }
 
     override fun toSignUp() {

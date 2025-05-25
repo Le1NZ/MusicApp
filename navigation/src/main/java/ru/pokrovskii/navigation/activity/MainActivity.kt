@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import ru.pokrovskii.auth.api.UserCenter
@@ -36,15 +35,21 @@ internal class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             val isAuthorized = userCenter.currentUserBlocking().isAuthorized()
             val pendingScreen = if (isAuthorized) {
-                Screen.Favorites
+                Screen.Landing
             } else {
                 Screen.Login
             }
 
-            router.openScreen(
-                screen = pendingScreen,
-                needAddToBackStack = false,
-            )
+            router.openScreen(screen = pendingScreen)
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount <= 1) {
+            finish()
+        } else {
+            super.onBackPressed()
         }
     }
 

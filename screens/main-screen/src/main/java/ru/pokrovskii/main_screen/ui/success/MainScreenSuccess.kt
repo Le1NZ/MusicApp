@@ -1,10 +1,12 @@
 package ru.pokrovskii.main_screen.ui.success
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,11 +16,14 @@ import ru.pokrovskii.design.theme.api.AppTheme
 import ru.pokrovskii.design.toolbar.AppToolbar
 import ru.pokrovskii.design.toolbar.ToolbarConfig
 import ru.pokrovskii.design.toolbar.ToolbarIcon
-import ru.pokrovskii.main_screen.state.SkeletonSongState
+import ru.pokrovskii.main_screen.state.MainScreenState
+import ru.pokrovskii.main_screen.viewmodel.MainScreenPresenter
+import ru.pokrovskii.main_screen.viewmodel.MainScreenPresenterPreview
 
 @Composable
 internal fun MainScreenSuccess(
-
+    state: MainScreenState.Success,
+    presenter: MainScreenPresenter,
 ) {
     Column(
         modifier = Modifier
@@ -28,44 +33,33 @@ internal fun MainScreenSuccess(
             config = ToolbarConfig(
                 icons = listOf(
                     ToolbarIcon.Favorites(
-                        onClick = { },
+                        onClick = presenter::onFavoritesClick,
                     ),
                     ToolbarIcon.Search(
-                        onClick = { },
+                        onClick = presenter::onSearchClick,
                     ),
                 ),
             )
         )
 
-        SkeletonBlock(
-            name = "Новое",
-            songs = listOf(
-                SkeletonSongState.forPreview(),
-                SkeletonSongState.forPreview(),
-            ),
-        )
+        LazyColumn(
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            items(
+                items = state.blocks,
+                key = { it.id },
+            ) { block ->
+                LandingBlock(
+                    name = block.title,
+                    songs = block.songs,
+                    onSongClick = presenter::onSongClick,
+                )
+            }
 
-        SkeletonBlock(
-            modifier = Modifier
-                .padding(top = 16.dp),
-            name = "Интересное",
-            songs = listOf(
-                SkeletonSongState.forPreview(),
-                SkeletonSongState.forPreview(),
-            )
-        )
-
-        SkeletonBlock(
-            modifier = Modifier
-                .padding(top = 16.dp),
-            name = "Лучшее",
-            songs = listOf(
-                SkeletonSongState.forPreview(),
-                SkeletonSongState.forPreview(),
-            )
-        )
-
-        Spacer(modifier = Modifier.navigationBarsPadding())
+            item {
+                Spacer(modifier = Modifier.navigationBarsPadding())
+            }
+        }
     }
 }
 
@@ -74,7 +68,10 @@ internal fun MainScreenSuccess(
 private fun MainScreenSuccessPreview() {
     AppTheme {
         Surface {
-            MainScreenSuccess()
+            MainScreenSuccess(
+                state = MainScreenState.forPreview(),
+                presenter = MainScreenPresenterPreview(),
+            )
         }
     }
 }

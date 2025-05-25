@@ -2,6 +2,8 @@ package ru.pokrovskii.model.screen
 
 sealed interface Screen {
 
+    data object Landing : Screen
+
     data class Song(
         val id: Int,
     ) : Screen

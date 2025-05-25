@@ -9,11 +9,13 @@ import ru.pokrovskii.implementation.artist.ArtistScreenDi
 import ru.pokrovskii.implementation.artist_songs.ArtistSongsScreenDi
 import ru.pokrovskii.implementation.login.LoginScreenDi
 import ru.pokrovskii.implementation.favorites.FavoritesScreenDi
+import ru.pokrovskii.implementation.main.MainScreenDi
 import ru.pokrovskii.implementation.search.SearchScreenDi
 import ru.pokrovskii.implementation.sign_up.SignUpScreenDi
 import ru.pokrovskii.implementation.song.SongScreenDi
 import ru.pokrovskii.likes.control.api.LikesControlDi
 import ru.pokrovskii.log_in_screen.di.LoginScreenLocalDi
+import ru.pokrovskii.main_screen.di.MainScreenLocalDi
 import ru.pokrovskii.navigation.api.NavigationDi
 import ru.pokrovskii.network.api.NetworkDi
 import ru.pokrovskii.network.di.NetworkLocalDi
@@ -39,6 +41,8 @@ internal object AppDi {
         StorageDi.module,
         LikesControlDi.module,
         SongItemLocalDi.module,
+        MainScreenLocalDi.module,
+        MainScreenDi.module,
         SearchScreenLocalDi.module,
         SongScreenDi.module,
         LoginScreenDi.module,

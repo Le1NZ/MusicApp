@@ -7,5 +7,6 @@ internal fun UserDto.toUser(): UserInfo {
     return UserInfo(
         login = login,
         token = token,
+        isAdmin = isAdmin,
     )
 }

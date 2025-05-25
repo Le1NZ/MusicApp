@@ -7,6 +7,8 @@ import ru.pokrovskii.network.artist_songs.api.ArtistSongsRepository
 import ru.pokrovskii.network.artist_songs.impl.ArtistSongsRepositoryImpl
 import ru.pokrovskii.network.auth.api.AuthRepository
 import ru.pokrovskii.network.auth.impl.AuthRepositoryImpl
+import ru.pokrovskii.network.landing.api.LandingRepository
+import ru.pokrovskii.network.landing.impl.LandingRepositoryImpl
 import ru.pokrovskii.network.search.api.SearchRepository
 import ru.pokrovskii.network.search.impl.SearchRepositoryImpl
 import ru.pokrovskii.network.song.api.SongRepository
@@ -20,5 +22,6 @@ object NetworkDi {
         single<ArtistRepository> { ArtistRepositoryImpl(get()) }
         single<ArtistSongsRepository> { ArtistSongsRepositoryImpl(get()) }
         single<AuthRepository> { AuthRepositoryImpl(get()) }
+        single<LandingRepository> { LandingRepositoryImpl(inject()) }
     }
 }

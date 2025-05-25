@@ -13,7 +13,6 @@ internal class AppRouter(
     override fun openScreen(
         screen: Screen,
         clearBackStack: Boolean,
-        needAddToBackStack: Boolean,
     ) {
         fragmentManager.commit {
             setCustomAnimations(
@@ -23,10 +22,7 @@ internal class AppRouter(
                 /* popExit = */ R.anim.slide_out,
             )
 
-            if (needAddToBackStack) {
-                addToBackStack(null)
-            }
-
+            addToBackStack(null)
             replace(R.id.fragment_container, screen.resolveFragment())
 
             if (clearBackStack) {

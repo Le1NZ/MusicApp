@@ -46,6 +46,7 @@ dependencies {
     implementation(project(":screens:artist-screen"))
     implementation(project(":screens:artist-songs-screen"))
     implementation(project(":screens:favorites-screen"))
+    implementation(project(":screens:main-screen"))
     implementation(project(":screens:search-screen"))
     implementation(project(":screens:song-item"))
     implementation(project(":screens:log-in-screen"))

@@ -1,6 +1,7 @@
 package ru.pokrovskii.main_screen.ui.success
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,18 +16,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
 import ru.pokrovskii.design.theme.api.AppTheme
-import ru.pokrovskii.main_screen.state.SkeletonSongState
+import ru.pokrovskii.main_screen.state.LandingSongState
 
-private val MIN_HEIGHT = 200.dp
+private val MIN_HEIGHT = 300.dp
 
 @Composable
-internal fun SkeletonBlockSong(
-    song: SkeletonSongState,
+internal fun LandingBlockSong(
+    song: LandingSongState,
+    onClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -34,19 +38,30 @@ internal fun SkeletonBlockSong(
             .clip(
                 shape = RoundedCornerShape(8),
             )
+            .clickable(
+                onClick = { onClick(song.id) },
+            )
             .heightIn(min = MIN_HEIGHT)
             .background(Color.Gray)
             .fillMaxWidth(),
         contentAlignment = Alignment.BottomStart,
     ) {
+        AsyncImage(
+            modifier = Modifier
+                .matchParentSize(),
+            model = song.imageUrl,
+            contentDescription = null,
+            contentScale = ContentScale.FillWidth,
+        )
+
         Column(
             modifier = Modifier
                 .padding(16.dp)
         ) {
-            SkeletonBlockSongTitle(
+            LandingBlockSongTitle(
                 title = song.title,
             )
-            SkeletonBlockSongSubtitle(
+            LandingBlockSongSubtitle(
                 subtitle = song.artist,
             )
         }
@@ -54,7 +69,7 @@ internal fun SkeletonBlockSong(
 }
 
 @Composable
-private fun SkeletonBlockSongTitle(
+private fun LandingBlockSongTitle(
     title: String,
     modifier: Modifier = Modifier,
 ) {
@@ -69,7 +84,7 @@ private fun SkeletonBlockSongTitle(
 }
 
 @Composable
-private fun SkeletonBlockSongSubtitle(
+private fun LandingBlockSongSubtitle(
     subtitle: String,
     modifier: Modifier = Modifier,
 ) {
@@ -88,8 +103,9 @@ private fun SkeletonBlockSongSubtitle(
 private fun SkeletonBlockSongPreview() {
     AppTheme {
         Surface {
-            SkeletonBlockSong(
-                song = SkeletonSongState.forPreview(),
+            LandingBlockSong(
+                song = LandingSongState.forPreview(id = 1),
+                onClick = { },
             )
         }
     }

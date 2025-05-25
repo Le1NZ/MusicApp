@@ -15,12 +15,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.pokrovskii.design.theme.api.AppTheme
-import ru.pokrovskii.main_screen.state.SkeletonSongState
+import ru.pokrovskii.main_screen.state.LandingSongState
 
 @Composable
-internal fun SkeletonBlock(
+internal fun LandingBlock(
     name: String,
-    songs: List<SkeletonSongState>,
+    songs: List<LandingSongState>,
+    onSongClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -36,15 +37,17 @@ internal fun SkeletonBlock(
             color = MaterialTheme.colorScheme.onBackground,
         )
 
-        SkeletonBlockHorizontalPager(
+        LandingBlockHorizontalPager(
             songs = songs,
+            onSongClick = onSongClick,
         )
     }
 }
 
 @Composable
-private fun SkeletonBlockHorizontalPager(
-    songs: List<SkeletonSongState>,
+private fun LandingBlockHorizontalPager(
+    songs: List<LandingSongState>,
+    onSongClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val state = rememberPagerState(
@@ -60,10 +63,12 @@ private fun SkeletonBlockHorizontalPager(
         contentPadding = PaddingValues(
             horizontal = 16.dp,
         ),
+        key = { songs[it].id },
     ) { page ->
         val song = songs[page]
-        SkeletonBlockSong(
+        LandingBlockSong(
             song = song,
+            onClick = onSongClick,
         )
     }
 }
@@ -73,13 +78,14 @@ private fun SkeletonBlockHorizontalPager(
 private fun SkeletonBlockPreview() {
     AppTheme {
         Surface {
-            SkeletonBlock(
+            LandingBlock(
                 name = "Test",
                 songs = listOf(
-                    SkeletonSongState.forPreview(),
-                    SkeletonSongState.forPreview(),
-                    SkeletonSongState.forPreview(),
+                    LandingSongState.forPreview(id = 1),
+                    LandingSongState.forPreview(id = 2),
+                    LandingSongState.forPreview(id = 3),
                 ),
+                onSongClick = { },
             )
         }
     }
