@@ -4,10 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import ru.pokrovskii.auth.api.UserCenter
 import ru.pokrovskii.screen.song.api.SongScreenApi
 import ru.pokrovskii.screen.song.domain.SongScreenCenter
 import ru.pokrovskii.screen.song.ui.mapper.SongUiModelConverter
@@ -16,14 +20,26 @@ import ru.pokrovskii.screen.song.ui.state.SongScreenState
 internal class SongScreenViewModel(
     private val songScreenCenter: SongScreenCenter,
     private val args: SongScreenApi.Args,
+    userCenterLazy: Lazy<UserCenter>,
 ) : ViewModel() {
 
+    private val userCenter by userCenterLazy
     private var loadJob: Job? = null
     private var collectLikeStatusJob: Job? = null
     private var setLikeStatusJob: Job? = null
 
     private val _state = MutableStateFlow<SongScreenState>(SongScreenState.Loading)
     val state = _state.asStateFlow()
+
+    val canCopy = userCenter
+        .users
+        .map { user ->
+            user?.isAdmin ?: false
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.Eagerly,
+            initialValue = userCenter.currentUserBlocking()?.isAdmin ?: false,
+        )
 
     init {
         loadSong()

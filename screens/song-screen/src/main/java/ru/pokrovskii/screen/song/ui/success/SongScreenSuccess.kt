@@ -9,19 +9,25 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ClipboardManager
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.pokrovskii.design.theme.api.AppTheme
+import ru.pokrovskii.screen.song.R
+import ru.pokrovskii.screen.song.ui.canCopy
 import ru.pokrovskii.screen.song.ui.state.SongScreenState
 import ru.pokrovskii.screen.song.ui.state.SongUiModel
 import ru.pokrovskii.screen.song.ui.success.artist.FeaturedArtistsBlock
 import ru.pokrovskii.screen.song.ui.success.artist.PrimaryArtistsBlock
 import ru.pokrovskii.screen.song.ui.success.artist.ProducerArtistsBlock
 import ru.pokrovskii.screen.song.ui.success.block.AlbumBlock
+import ru.pokrovskii.screen.song.ui.success.block.SongButton
 import ru.pokrovskii.screen.song.ui.success.block.SongHotBlock
 import ru.pokrovskii.screen.song.ui.success.block.SongRecordingLocation
 import ru.pokrovskii.screen.song.ui.success.block.SongReleaseDate
-import ru.pokrovskii.screen.song.ui.success.block.SongToTextButton
 import ru.pokrovskii.screen.song.ui.success.header.SongHeader
 import ru.pokrovskii.screen.song.viewmodel.SongScreenPresenter
 import ru.pokrovskii.screen.song.viewmodel.SongScreenPresenterPreview
@@ -34,6 +40,7 @@ internal fun SongScreenSuccess(
 ) {
     val song = remember(state) { state.songUiModel }
     val lazyListState = rememberLazyListState()
+    val clipboardManager: ClipboardManager = LocalClipboardManager.current
 
     LazyColumn(
         state = lazyListState,
@@ -100,9 +107,10 @@ internal fun SongScreenSuccess(
             }
         }
         item {
-            SongToTextButton(
+            SongButton(
                 modifier = Modifier
                     .padding(top = 8.dp),
+                text = stringResource(R.string.to_song_text),
                 onClick = onToTextButtonClick,
             )
         }
@@ -116,6 +124,39 @@ internal fun SongScreenSuccess(
                 )
             }
         }
+
+        item {
+            if (canCopy) {
+                SongButton(
+                    modifier = Modifier
+                        .padding(top = 8.dp),
+                    text = stringResource(id = R.string.copy_id),
+                    onClick = {
+                        clipboardManager.setText(
+                            annotatedString = AnnotatedString(song.id.toString()),
+                        )
+                    },
+                )
+            }
+        }
+
+        item {
+            if (canCopy && song.coverUrl != null) {
+                if (canCopy) {
+                    SongButton(
+                        modifier = Modifier
+                            .padding(top = 8.dp),
+                        text = stringResource(id = R.string.copy_image_url),
+                        onClick = {
+                            clipboardManager.setText(
+                                annotatedString = AnnotatedString(song.coverUrl),
+                            )
+                        },
+                    )
+                }
+            }
+        }
+
         item {
             Spacer(modifier = Modifier.navigationBarsPadding())
         }

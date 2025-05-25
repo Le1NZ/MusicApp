@@ -1,5 +1,6 @@
 package ru.pokrovskii.network.di
 
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,9 +18,12 @@ private typealias UserRetrofit = Retrofit
 
 object NetworkLocalDi {
 
+    private const val GENIUS_RETROFIT = "GeniusRetrofit"
+    private const val USER_RETROFIT = "UserRetrofit"
+
     val module = module {
 
-        single<GeniusRetrofit> {
+        single<GeniusRetrofit>(named(GENIUS_RETROFIT)) {
             Retrofit
                 .Builder()
                 .baseUrl(Config.BASE_URL)
@@ -27,7 +31,7 @@ object NetworkLocalDi {
                 .build()
         }
 
-        single<UserRetrofit> {
+        single<UserRetrofit>(named(USER_RETROFIT)) {
             Retrofit
                 .Builder()
                 .baseUrl(UserServerConfig.BASE_URL)
@@ -35,12 +39,12 @@ object NetworkLocalDi {
                 .build()
         }
 
-        single<SearchApi> { get<GeniusRetrofit>().create(SearchApi::class.java) }
-        single<SongApi> { get<GeniusRetrofit>().create(SongApi::class.java) }
-        single<ArtistApi> { get<GeniusRetrofit>().create(ArtistApi::class.java) }
-        single<ArtistSongsApi> { get<GeniusRetrofit>().create(ArtistSongsApi::class.java) }
+        single<SearchApi> { get<GeniusRetrofit>(named(GENIUS_RETROFIT)).create(SearchApi::class.java) }
+        single<SongApi> { get<GeniusRetrofit>(named(GENIUS_RETROFIT)).create(SongApi::class.java) }
+        single<ArtistApi> { get<GeniusRetrofit>(named(GENIUS_RETROFIT)).create(ArtistApi::class.java) }
+        single<ArtistSongsApi> { get<GeniusRetrofit>(named(GENIUS_RETROFIT)).create(ArtistSongsApi::class.java) }
 
-        single<AuthApi> { get<UserRetrofit>().create(AuthApi::class.java) }
-        single<LandingApi> { get<UserRetrofit>().create(LandingApi::class.java) }
+        single<AuthApi> { get<UserRetrofit>(named(USER_RETROFIT)).create(AuthApi::class.java) }
+        single<LandingApi> { get<UserRetrofit>(named(USER_RETROFIT)).create(LandingApi::class.java) }
     }
 }

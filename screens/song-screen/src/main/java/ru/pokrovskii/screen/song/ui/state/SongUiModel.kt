@@ -5,6 +5,7 @@ import ru.pokrovskii.design.artist.ArtistItemUiModel
 
 @Immutable
 internal data class SongUiModel(
+    val id: Int,
     val title: String,
     val releaseDate: String?,
     val pageViewCount: Long,
@@ -22,6 +23,7 @@ internal data class SongUiModel(
     companion object {
 
         val PREVIEW = SongUiModel(
+            id = 0,
             title = "Серпанитин",
             releaseDate = "Today",
             isHot = true,

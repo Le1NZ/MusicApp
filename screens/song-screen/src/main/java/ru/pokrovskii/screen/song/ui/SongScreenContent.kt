@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.pokrovskii.design.screen.ErrorScreen
 import ru.pokrovskii.design.screen.LoadingScreen
 import ru.pokrovskii.design.theme.api.AppTheme
@@ -42,11 +44,15 @@ internal fun SongScreenContent(
             is SongScreenState.Error -> ErrorScreen(
                 onRetryClick = presenter::onRetryClick,
             )
-            is SongScreenState.Success -> SongScreenSuccess(
-                state = state,
-                presenter = presenter,
-                onToTextButtonClick = presenter::onToTextButtonClick,
-            )
+            is SongScreenState.Success -> CompositionLocalProvider(
+                value = LocalCanCopy provides presenter.canCopy.collectAsStateWithLifecycle().value,
+            ) {
+                SongScreenSuccess(
+                    state = state,
+                    presenter = presenter,
+                    onToTextButtonClick = presenter::onToTextButtonClick,
+                )
+            }
         }
     }
 }

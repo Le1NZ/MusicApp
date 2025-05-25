@@ -8,6 +8,7 @@ internal object SongUiModelConverter {
 
     fun convert(song: Song, isLiked: Boolean): SongUiModel {
         return SongUiModel(
+            id = song.id,
             title = song.title,
             recordingLocation = song.recordingLocation,
             releaseDate = song.releaseDate,

@@ -39,6 +39,7 @@ android {
 
 dependencies {
 
+    implementation(project(":auth"))
     implementation(project(":design"))
     implementation(project(":likes-control"))
     implementation(project(":model"))

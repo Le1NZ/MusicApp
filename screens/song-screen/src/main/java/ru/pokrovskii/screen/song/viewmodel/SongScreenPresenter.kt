@@ -10,6 +10,7 @@ import ru.pokrovskii.screen.song.ui.state.SongScreenState
 internal interface SongScreenPresenter {
 
     val state: StateFlow<SongScreenState>
+    val canCopy: StateFlow<Boolean>
 
     fun onFavoritesClick()
     fun onSearchClick()
@@ -25,6 +26,7 @@ internal class SongScreenPresenterImpl(
 ) : SongScreenPresenter {
 
     override val state = viewModel.state
+    override val canCopy = viewModel.canCopy
 
     override fun onFavoritesClick() {
         actions.onFavoriteClick()
@@ -54,6 +56,7 @@ internal class SongScreenPresenterImpl(
 internal class SongScreenPresenterPreview : SongScreenPresenter {
 
     override val state = MutableStateFlow(SongScreenState.Loading)
+    override val canCopy = MutableStateFlow(false)
 
     override fun onFavoritesClick() = Unit
     override fun onSearchClick() = Unit

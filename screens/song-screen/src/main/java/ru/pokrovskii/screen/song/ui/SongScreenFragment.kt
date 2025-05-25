@@ -28,6 +28,7 @@ internal class SongScreenFragment : Fragment() {
         SongScreenViewModel(
             args = args,
             songScreenCenter = get(),
+            userCenterLazy = inject(),
         )
     }
 
