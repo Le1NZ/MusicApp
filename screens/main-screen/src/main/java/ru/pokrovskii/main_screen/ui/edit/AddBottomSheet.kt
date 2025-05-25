@@ -104,7 +104,10 @@ internal fun AddBottomSheet(
                         onDismiss()
                     }
 
-                    onAdd(id.toInt(), title, artist, imageUrl)
+                    try {
+                        onAdd(id.toInt(), title, artist, imageUrl)
+                    } catch (_: Exception) {
+                    }
                 }
             },
         ) {
