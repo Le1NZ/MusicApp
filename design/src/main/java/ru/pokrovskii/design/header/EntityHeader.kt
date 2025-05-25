@@ -10,11 +10,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import ru.pokrovskii.design.coil.imageRequestOf
@@ -81,29 +78,4 @@ private fun EntityHeaderCover(
             height = screenWidth / 2.5f,
         )
     }
-}
-
-@Composable
-private fun BottomOverlay(
-    modifier: Modifier,
-    height: Dp,
-) {
-    Box(
-        modifier = modifier
-            .height(height)
-            .fillMaxWidth()
-            .background(
-                Brush.verticalGradient(
-                    0f to Color.Unspecified,
-                    .1f to MaterialTheme.colorScheme.background.copy(0.5f),
-                    .15f to MaterialTheme.colorScheme.background.copy(0.7f),
-                    .2f to MaterialTheme.colorScheme.background.copy(0.8f),
-                    .3f to MaterialTheme.colorScheme.background.copy(0.85f),
-                    .4f to MaterialTheme.colorScheme.background.copy(0.9f),
-                    .5f to MaterialTheme.colorScheme.background.copy(0.95f),
-                    .6f to MaterialTheme.colorScheme.background.copy(0.98f),
-                    1f to MaterialTheme.colorScheme.background,
-                )
-            ),
-    )
 }

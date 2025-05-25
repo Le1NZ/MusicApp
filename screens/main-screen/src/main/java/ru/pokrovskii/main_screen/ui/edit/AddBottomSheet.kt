@@ -32,7 +32,7 @@ import ru.pokrovskii.main_screen.R
 @Composable
 internal fun AddBottomSheet(
     onAdd: (
-        id: Int,
+        id: String,
         title: String,
         artist: String,
         imageUrl: String
@@ -104,10 +104,7 @@ internal fun AddBottomSheet(
                         onDismiss()
                     }
 
-                    try {
-                        onAdd(id.toInt(), title, artist, imageUrl)
-                    } catch (_: Exception) {
-                    }
+                    onAdd(id, title, artist, imageUrl)
                 }
             },
         ) {

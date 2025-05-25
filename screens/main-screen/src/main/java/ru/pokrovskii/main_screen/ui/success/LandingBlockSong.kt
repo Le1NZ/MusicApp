@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -26,12 +28,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import ru.pokrovskii.design.header.BottomOverlay
 import ru.pokrovskii.design.theme.api.AppTheme
 import ru.pokrovskii.main_screen.R
 import ru.pokrovskii.main_screen.state.LandingSongState
 import ru.pokrovskii.main_screen.ui.edit.canEdit
 
 private val MIN_HEIGHT = 300.dp
+private val OVERLAY_HEIGHT = 100.dp
 
 @Composable
 internal fun LandingBlockSong(
@@ -61,6 +65,11 @@ internal fun LandingBlockSong(
             contentScale = ContentScale.FillWidth,
         )
 
+        BottomOverlay(
+            modifier = Modifier.align(Alignment.BottomCenter),
+            height = OVERLAY_HEIGHT,
+        )
+
         Column(
             modifier = Modifier
                 .padding(16.dp)
@@ -76,6 +85,9 @@ internal fun LandingBlockSong(
         if (canEdit) {
             IconButton(
                 modifier = Modifier
+                    .padding(8.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surfaceTint)
                     .align(Alignment.TopEnd)
                     .wrapContentSize(),
                 onClick = { onSongDelete(song.id) },
@@ -83,7 +95,7 @@ internal fun LandingBlockSong(
                 Icon(
                     painter = painterResource(id = R.drawable.baseline_delete_outline_24),
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onBackground,
+                    tint = MaterialTheme.colorScheme.inverseOnSurface,
                 )
             }
         }
@@ -108,7 +120,15 @@ internal fun AddLandingBlockSong(
             .fillMaxWidth(),
         contentAlignment = Alignment.Center,
     ) {
+        BottomOverlay(
+            modifier = Modifier
+                .align(Alignment.BottomCenter),
+            height = OVERLAY_HEIGHT,
+        )
+
         Icon(
+            modifier = Modifier
+                .size(48.dp),
             painter = painterResource(id = R.drawable.baseline_add_24),
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onBackground,

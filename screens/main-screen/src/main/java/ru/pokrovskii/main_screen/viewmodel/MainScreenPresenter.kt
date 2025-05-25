@@ -18,7 +18,7 @@ internal interface MainScreenPresenter {
     fun onBlockTitleChanged(id: String, newTitle: String)
 
     fun onSongAdd(
-        id: Int,
+        id: String,
         title: String,
         artist: String,
         imageUrl: String,
@@ -65,7 +65,7 @@ internal class MainScreenPresenterImpl(
     }
 
     override fun onSongAdd(
-        id: Int,
+        id: String,
         title: String,
         artist: String,
         imageUrl: String,
@@ -100,7 +100,7 @@ internal class MainScreenPresenterPreview : MainScreenPresenter {
     override fun onSongDelete(id: Int, blockId: String) = Unit
     override fun onBlockTitleChanged(id: String, newTitle: String) = Unit
     override fun onSongAdd(
-        id: Int,
+        id: String,
         title: String,
         artist: String,
         imageUrl: String,

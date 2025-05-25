@@ -88,17 +88,18 @@ internal class MainScreenViewModel(
     }
 
     fun onSongAdd(
-        id: Int,
+        id: String,
         title: String,
         artist: String,
         imageUrl: String,
         blockId: String,
     ) {
+        val intId = id.toIntOrNull() ?: return
         _state.value = MainScreenState.Loading
         loadJob?.cancel()
         loadJob = viewModelScope.launch {
             val result = center.addSong(
-                id = id,
+                id = intId,
                 blockId = blockId,
                 title = title,
                 artist = artist,
